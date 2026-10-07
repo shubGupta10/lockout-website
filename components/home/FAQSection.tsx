@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Plus, ArrowRight } from "lucide-react";
 import { homeFaqs } from "@/content/faq";
 import { Highlight } from "@/components/ui/Highlight";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -22,7 +23,13 @@ export default function FAQSection() {
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
 
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
+        <motion.div 
+          className="max-w-3xl mx-auto text-center mb-16 md:mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <h2
             id="faq-heading"
             className="text-3xl sm:text-4xl lg:text-[40px] font-semibold tracking-tight text-foreground leading-[1.15] text-balance"
@@ -32,7 +39,7 @@ export default function FAQSection() {
           <p className="text-lg text-muted-foreground max-w-xl mx-auto mt-5 leading-relaxed text-balance">
             Answers about Lockout, privacy, and native Android blocking.
           </p>
-        </div>
+        </motion.div>
 
         {/* Unified Divider Accordion List */}
         <div className="max-w-3xl mx-auto w-full">
@@ -68,30 +75,37 @@ export default function FAQSection() {
                     </span>
                   </button>
 
-                  <div
-                    id={`faq-answer-${index}`}
-                    role="region"
-                    aria-labelledby={`faq-question-${index}`}
-                    className={`overflow-hidden transition-all duration-200 ease-in-out ${isOpen ? "max-h-96 pb-6 opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                  >
-                    <div className="text-muted-foreground text-lg leading-relaxed pr-6 sm:pr-12">
-                      <p>{faq.answer}</p>
-                      {faq.link && (
-                        <div className="mt-3">
-                          <Link
-                            href={faq.link.href}
-                            target={faq.link.isExternal ? "_blank" : undefined}
-                            rel={faq.link.isExternal ? "noopener noreferrer" : undefined}
-                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:opacity-90 transition-opacity group/link"
-                          >
-                            <span>{faq.link.text}</span>
-                            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
-                          </Link>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={`faq-answer-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-question-${index}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="text-muted-foreground text-lg leading-relaxed pr-6 sm:pr-12 pb-6">
+                          <p>{faq.answer}</p>
+                          {faq.link && (
+                            <div className="mt-3">
+                              <Link
+                                href={faq.link.href}
+                                target={faq.link.isExternal ? "_blank" : undefined}
+                                rel={faq.link.isExternal ? "noopener noreferrer" : undefined}
+                                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:opacity-90 transition-opacity group/link"
+                              >
+                                <span>{faq.link.text}</span>
+                                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
+                              </Link>
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}

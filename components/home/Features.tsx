@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { Highlight } from "@/components/ui/Highlight";
 import { DeviceMockup } from "@/components/ui/DeviceMockup";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Features() {
   const { resolvedTheme } = useTheme();
@@ -38,8 +38,12 @@ export default function Features() {
         <div className="rounded-[24px] md:rounded-[32px] bg-border border border-border overflow-hidden shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-px">
 
-            {/* Compartment 1: Native App Blocking (7 Columns) */}
-            <div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+            <motion.div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
 
               {/* Content Tier */}
               <div className="max-w-xl z-10">
@@ -62,10 +66,14 @@ export default function Features() {
                 />
               </div>
 
-            </div>
+            </motion.div>
 
-            {/* Compartment 2: Focus Sessions & Strict Mode (5 Columns) */}
-            <div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+            <motion.div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+            >
 
               {/* Content Tier */}
               <div className="max-w-xl z-10">
@@ -86,10 +94,14 @@ export default function Features() {
                 />
               </div>
 
-            </div>
+            </motion.div>
 
-            {/* Compartment 3: Gamification (5 Columns) */}
-            <div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300">
+            <motion.div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
+              initial={{ opacity: 0, x: -40, y: 40 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               {/* Content Tier */}
               <div className="max-w-xl z-10">
                 <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
@@ -108,10 +120,14 @@ export default function Features() {
                   className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[360px] sm:h-[420px] lg:h-[480px]"
                 />
               </div>
-            </div>
+            </motion.div>
 
-            {/* Compartment 4: Routines (7 Columns) */}
-            <div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300">
+            <motion.div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
+              initial={{ opacity: 0, x: 40, y: 40 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+            >
               {/* Content Tier */}
               <div className="max-w-xl z-10">
                 <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
@@ -130,12 +146,12 @@ export default function Features() {
                   className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[360px] sm:h-[420px] lg:h-[480px]"
                 />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
 
       </div>
-    </section>
+    </section >
   );
 }

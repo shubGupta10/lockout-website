@@ -6,11 +6,28 @@ interface DeviceMockupProps {
   className?: string;
   imageClassName?: string;
   priority?: boolean;
+  showBottomEdge?: boolean;
 }
 
-export function DeviceMockup({ src, alt, className = "", imageClassName = "object-cover object-top", priority = false }: DeviceMockupProps) {
+export function DeviceMockup({ 
+  src, 
+  alt, 
+  className = "", 
+  imageClassName = "object-cover object-top", 
+  priority = false,
+  showBottomEdge = false 
+}: DeviceMockupProps) {
+  
+  const bottomClasses = showBottomEdge 
+    ? "border-b-[6px] md:border-b-[12px] rounded-b-[2.5rem] md:rounded-b-[3rem]" 
+    : "";
+    
+  const innerBottomClasses = showBottomEdge
+    ? "rounded-b-[1.8rem] md:rounded-b-[2.3rem]"
+    : "";
+
   return (
-    <div className={`relative flex flex-col bg-zinc-950 border-t-[6px] border-x-[6px] md:border-t-[12px] md:border-x-[12px] border-zinc-950 rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-2xl overflow-hidden shrink-0 ring-1 ring-border/20 ${className}`}>
+    <div className={`relative flex flex-col bg-zinc-950 border-t-[6px] border-x-[6px] md:border-t-[12px] md:border-x-[12px] border-zinc-950 rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-2xl overflow-hidden shrink-0 ring-1 ring-border/20 ${bottomClasses} ${className}`}>
       
       {/* Outer edge highlight */}
       <div className="absolute inset-0 rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-[inset_0_0_2px_rgba(255,255,255,0.4)] pointer-events-none z-50" />
@@ -23,7 +40,7 @@ export function DeviceMockup({ src, alt, className = "", imageClassName = "objec
         </div>
       </div>
 
-      <div className="relative w-full h-full overflow-hidden rounded-t-[1.8rem] md:rounded-t-[2.3rem] bg-white dark:bg-[#141414] flex flex-col">
+      <div className={`relative w-full h-full overflow-hidden rounded-t-[1.8rem] md:rounded-t-[2.3rem] ${innerBottomClasses} bg-white dark:bg-[#141414] flex flex-col`}>
         {/* Fake Status Bar */}
         <div className="absolute top-0 inset-x-0 h-7 md:h-9 flex items-center justify-between px-5 md:px-6 z-40 pointer-events-none">
           {/* Time */}

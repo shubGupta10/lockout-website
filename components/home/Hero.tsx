@@ -10,6 +10,8 @@ import { Highlight } from "@/components/ui/Highlight";
 import { DeviceMockup } from "@/components/ui/DeviceMockup";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
+
 
 export default function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -32,7 +34,10 @@ export default function Hero() {
 
   const currentRatio = 1.3 + (scrollProgress * 0.86);
   const scaleValue = 0.85 + (scrollProgress * 0.15);
-  
+
+  const mobileScale = 0.95 + (scrollProgress * 0.20);
+  const mobileTranslateY = 10 - (scrollProgress * 100);
+
   // Prevent hydration mismatch by defaulting to light mode images before mount
   const isDark = mounted && resolvedTheme === "dark";
   const imageFolder = isDark ? "heroDarkImages" : "heroWhiteImages";
@@ -45,15 +50,27 @@ export default function Hero() {
 
       <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col items-center text-center relative z-20">
 
-        <h1 className="text-[36px] sm:text-5xl md:text-[52px] lg:text-[56px] xl:text-[60px] font-semibold tracking-tight text-foreground w-full mb-4 sm:mb-5 leading-[1.1] sm:leading-tight text-balance">
+        <motion.h1 className="text-[36px] sm:text-5xl md:text-[52px] lg:text-[56px] xl:text-[60px] font-semibold tracking-tight text-foreground w-full mb-4 sm:mb-5 leading-[1.1] sm:leading-tight text-balance"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           Reclaim your time. <Highlight>Lock</Highlight> yourself in
-        </h1>
+        </motion.h1>
 
-        <p className="text-lg md:text-[19px] font-normal text-muted-foreground max-w-[640px] mb-8 md:mb-10 leading-relaxed text-balance mx-auto">
+        <motion.p className="text-lg md:text-[19px] font-normal text-muted-foreground max-w-[640px] mb-8 md:mb-10 leading-relaxed text-balance mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+        >
           An offline-first, open-source focus app for Android. Block distracting apps, run structured Focus Sessions, and build better habits.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-8 sm:mb-10 md:mb-12">
+        <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-4 sm:mb-10 md:mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+        >
           <Link
             href="/download"
             className="w-full sm:w-auto h-12 px-8 rounded-lg bg-primary text-primary-foreground text-[15px] font-medium flex items-center justify-center hover:opacity-90 transition-opacity shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
@@ -69,10 +86,10 @@ export default function Hero() {
             <FontAwesomeIcon icon={faGithub} className="w-4 h-4 text-muted-foreground" />
             View on GitHub
           </a>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="relative w-full flex justify-center items-end pb-0 mt-6 md:mt-8">
+      <div className="relative w-full flex justify-center items-end pb-0 mt-4 md:mt-8">
 
         <div className="absolute top-[40%] md:top-[45%] -translate-y-1/2 w-[120%] max-w-[1100px] h-[180px] md:h-[260px] lg:h-[320px] bg-primary/10 rounded-full sm:rounded-[5rem] -z-10" />
 
@@ -110,12 +127,13 @@ export default function Hero() {
         <div className="sm:hidden w-full px-4 flex justify-center pb-12 relative z-20">
           <div
             className="relative w-full max-w-[320px] origin-top transition-transform duration-75 ease-out"
-            style={{ transform: `scale(${scaleValue})` }}
+            style={{ transform: `translateY(${mobileTranslateY}px) scale(${mobileScale})` }}
           >
             <DeviceMockup
               src={`/assets/${imageFolder}/Screenshot_initial_${initialImageSuffix}.png`}
               alt="Lockout App UI"
               className="w-full aspect-[1/2.16]"
+              showBottomEdge={true}
               priority
             />
           </div>

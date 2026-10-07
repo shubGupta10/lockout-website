@@ -18,6 +18,9 @@ export default function Footer() {
             {siteConfig.description}
           </p>
           <div className="flex items-center gap-4 mt-1">
+            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-sm">
+              <FontAwesomeIcon icon={faGithub} className="w-5 h-5" />
+            </a>
           </div>
         </div>
 
@@ -34,6 +37,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-3.5 col-span-2 sm:col-span-1">
             <h3 className="text-[11px] font-semibold text-foreground uppercase tracking-wider mb-2">Developer</h3>
+            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="text-[15px] text-muted-foreground hover:text-foreground transition-colors w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-sm py-1.5 sm:py-0">Source Code</a>
             <a href="https://shubhamgupta.online" target="_blank" rel="noopener noreferrer" className="text-[15px] text-muted-foreground hover:text-foreground transition-colors w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-sm py-1.5 sm:py-0">Contact Developer</a>
           </div>
         </div>

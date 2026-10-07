@@ -1,6 +1,8 @@
+"use client"
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Highlight } from "@/components/ui/Highlight";
+import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
@@ -10,7 +12,12 @@ export default function CTASection() {
       className="w-full bg-muted py-24 md:py-32 overflow-hidden"
     >
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-        <div className="max-w-2xl mx-auto text-center flex flex-col items-center">
+        <motion.div className="max-w-2xl mx-auto text-center flex flex-col items-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
 
           {/* Heading */}
           <h2
@@ -41,8 +48,8 @@ export default function CTASection() {
             Free & open source · No account required
           </p>
 
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </section >
   );
 }

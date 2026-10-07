@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/config";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 
@@ -18,6 +19,7 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -46,6 +48,42 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleTheme = (e: React.MouseEvent) => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+
+    if (!document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+
+    const x = e.clientX;
+    const y = e.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      document.documentElement.animate(
+        { clipPath },
+        {
+          duration: 500,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
+  };
+
   return (
     <div className={`fixed top-0 inset-x-0 w-full z-50 px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-[150%]'}`}>
     <header className="pointer-events-auto mx-auto w-full max-w-5xl bg-background backdrop-blur-xl border border-border rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all relative">
@@ -66,29 +104,43 @@ export default function Header() {
           <span>{siteConfig.name}</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7">
+        <nav 
+          className="hidden md:flex items-center gap-1"
+          onMouseLeave={() => setHoveredLink(null)}
+        >
           {desktopNav.map((link) => {
             const isActive = pathname === link.href;
+            const isHovered = hoveredLink === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-[15px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-md py-1 px-1.5 ${isActive
+                onMouseEnter={() => setHoveredLink(link.href)}
+                className={`relative px-4 py-2 text-[15px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-full ${isActive
                   ? "font-semibold text-primary"
                   : "font-medium text-muted-foreground hover:text-foreground"
                   }`}
               >
-                {link.name}
+                {isHovered && (
+                  <motion.div
+                    layoutId="header-hover-pill"
+                    className="absolute inset-0 bg-muted rounded-full -z-10"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
               </Link>
             );
           })}
-
         </nav>
 
         <div className="flex items-center gap-2">
           {mounted && (
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={toggleTheme}
               className="hidden md:flex p-2 text-muted-foreground hover:text-foreground transition-colors rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               aria-label="Toggle Dark Mode"
             >
@@ -141,8 +193,8 @@ export default function Header() {
           {mounted && (
             <div className="pt-4 border-t border-border mt-2">
               <button
-                onClick={() => {
-                  setTheme(theme === "dark" ? "light" : "dark");
+                onClick={(e) => {
+                  toggleTheme(e);
                   setMobileMenuOpen(false);
                 }}
                 className="flex items-center gap-3 py-3 px-4 w-full rounded-xl text-[16px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"

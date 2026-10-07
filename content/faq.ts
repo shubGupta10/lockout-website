@@ -13,11 +13,11 @@ export interface FAQItem {
 export const homeFaqs: FAQItem[] = [
   {
     question: "Does Lockout work on iOS?",
-    answer: "No. Lockout relies on native Android system APIs—specifically Usage Access and Display Over Apps—to enforce blocks at the operating system level. These capabilities are not permitted on iOS.",
+    answer: "No. Lockout uses native Android features like Usage Access and Display Over Apps to block apps. Apple does not allow these features on iOS.",
   },
   {
     question: "Why does Lockout need system permissions?",
-    answer: "Lockout requires Usage Access to detect when you launch a blocked app, and Display Over Apps to draw the blocking overlay over it. All evaluation is performed locally in device memory.",
+    answer: "Lockout needs Usage Access to know when you open a blocked app, and Display Over Apps to draw the block screen over it. Everything happens locally on your device.",
     link: {
       text: "Read our full permissions breakdown",
       href: "/transparency",
@@ -25,7 +25,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "Where is my Focus Session data stored?",
-    answer: "All your data—including Focus Session history, custom Routines, and Global Block lists—is stored locally in an SQLite database on your device. We do not use accounts or cloud sync.",
+    answer: "All your data, like your session history and block lists, stays strictly on your device. We don't use accounts or cloud sync.",
     link: {
       text: "Read our Privacy Policy",
       href: "/privacy",
@@ -33,15 +33,15 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "Does Lockout track what websites or apps I use?",
-    answer: "No. Lockout only checks the package name of active applications against your blocklist. We do not inspect URLs, track your web browsing history, or monitor what you do inside other apps.",
+    answer: "No. Lockout only checks the name of the app you are currently using against your blocklist. It does not track your web browsing history or monitor what you do inside apps.",
   },
   {
     question: "Can I uninstall Lockout to bypass an active block?",
-    answer: "Yes. Lockout is designed as an intentional discipline tool that introduces high friction to disrupt impulsive habits, rather than an irreversible device lock.",
+    answer: "Yes. Lockout is designed to add enough friction to break your impulsive habits. It is not a permanent device lock, so you can always uninstall it if needed.",
   },
   {
     question: "Is Lockout open source?",
-    answer: "Yes. The complete source code is public and auditable on GitHub. You can inspect how our blocking engine works or compile the APK directly from source.",
+    answer: "Yes. The source code is fully public on GitHub. You can check how the app works or build it yourself from the source.",
     link: {
       text: "Inspect source code on GitHub",
       href: siteConfig.links.github,
@@ -50,7 +50,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "How do I install and update the app?",
-    answer: "You can download the APK directly from our download page or GitHub Releases. We provide straightforward sideloading instructions to guide you through installation.",
+    answer: "You can download the APK from our download page or GitHub Releases. The page includes simple instructions to help you install it.",
     link: {
       text: "Go to Download Hub",
       href: "/download",
