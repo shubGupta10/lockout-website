@@ -2,6 +2,7 @@
 
 import { Highlight } from "@/components/ui/Highlight";
 import { DeviceMockup } from "@/components/ui/DeviceMockup";
+import { DeviceLightbox } from "@/components/ui/DeviceLightbox";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -44,8 +45,6 @@ export default function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-
-              {/* Content Tier */}
               <div className="max-w-xl z-10">
                 <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
                   Native app blocking
@@ -54,18 +53,22 @@ export default function Features() {
                   Using Android's native system APIs, Lockout intercepts distracting apps the millisecond you open them. Evaluated 100% locally on your device with zero workarounds.
                 </p>
               </div>
-
-              {/* Centered Device Showcase */}
               <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <DeviceMockup
-                  src={`/assets/ScreenShot_blocker.jpg`}
-                  alt="Lockout App Blocker Interception Screen"
-                  className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[360px] sm:h-[420px] lg:h-[480px]"
-                  imageClassName="object-cover object-bottom"
-                  priority
-                />
+                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                  <DeviceLightbox 
+                    src={`/assets/ScreenShot_blocker.jpg`} 
+                    alt="Lockout App Blocker Interception Screen"
+                  >
+                    <DeviceMockup
+                      src={`/assets/ScreenShot_blocker.jpg`}
+                      alt="Lockout App Blocker Interception Screen"
+                      className="w-full h-full"
+                      imageClassName="object-cover object-bottom"
+                      priority
+                    />
+                  </DeviceLightbox>
+                </div>
               </div>
-
             </motion.div>
 
             <motion.div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
@@ -74,8 +77,6 @@ export default function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
             >
-
-              {/* Content Tier */}
               <div className="max-w-xl z-10">
                 <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
                   Focus Sessions
@@ -84,16 +85,20 @@ export default function Features() {
                   Start a Focus Session with the interactive orb. Strict mode prevents cancelling the session when the urge to check your phone strikes.
                 </p>
               </div>
-
-              {/* Centered Device Showcase */}
               <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <DeviceMockup
-                  src={`/assets/${imageFolder}/Screenshot_timer_running_${timerImageSuffix}.png`}
-                  alt="Lockout Deep Focus Countdown Timer"
-                  className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[360px] sm:h-[420px] lg:h-[480px]"
-                />
+                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                  <DeviceLightbox 
+                    src={`/assets/${imageFolder}/Screenshot_timer_running_${timerImageSuffix}.png`} 
+                    alt="Lockout Deep Focus Countdown Timer"
+                  >
+                    <DeviceMockup
+                      src={`/assets/${imageFolder}/Screenshot_timer_running_${timerImageSuffix}.png`}
+                      alt="Lockout Deep Focus Countdown Timer"
+                      className="w-full h-full"
+                    />
+                  </DeviceLightbox>
+                </div>
               </div>
-
             </motion.div>
 
             <motion.div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
@@ -102,7 +107,6 @@ export default function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              {/* Content Tier */}
               <div className="max-w-xl z-10">
                 <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
                   Earn Coins
@@ -111,14 +115,19 @@ export default function Features() {
                   Turn your productivity into currency. Earn coins for every focused minute and spend them in the Coin Shop to unlock exclusive rewards.
                 </p>
               </div>
-
-              {/* Centered Device Showcase */}
               <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <DeviceMockup
-                  src={`/assets/${imageFolder}/Screenshot_shop_${shopImageSuffix}.png`}
-                  alt="Lockout Coin Shop"
-                  className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[360px] sm:h-[420px] lg:h-[480px]"
-                />
+                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                  <DeviceLightbox 
+                    src={`/assets/${imageFolder}/Screenshot_shop_${shopImageSuffix}.png`} 
+                    alt="Lockout Coin Shop"
+                  >
+                    <DeviceMockup
+                      src={`/assets/${imageFolder}/Screenshot_shop_${shopImageSuffix}.png`}
+                      alt="Lockout Coin Shop"
+                      className="w-full h-full"
+                    />
+                  </DeviceLightbox>
+                </div>
               </div>
             </motion.div>
 
@@ -128,7 +137,6 @@ export default function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
             >
-              {/* Content Tier */}
               <div className="max-w-xl z-10">
                 <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
                   Routines
@@ -137,21 +145,25 @@ export default function Features() {
                   Schedule recurring Routines for workday deep work, study blocks, or bedtime. Lockout automatically engages your blocklists on time, complete with ambient pre-session warnings.
                 </p>
               </div>
-
-              {/* Centered Device Showcase */}
               <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <DeviceMockup
-                  src={`/assets/${imageFolder}/Screenshot_routines_${routinesImageSuffix}.png`}
-                  alt="Lockout Home & Routines Hub"
-                  className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[360px] sm:h-[420px] lg:h-[480px]"
-                />
+                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                  <DeviceLightbox 
+                    src={`/assets/${imageFolder}/Screenshot_routines_${routinesImageSuffix}.png`} 
+                    alt="Lockout Home & Routines Hub"
+                  >
+                    <DeviceMockup
+                      src={`/assets/${imageFolder}/Screenshot_routines_${routinesImageSuffix}.png`}
+                      alt="Lockout Home & Routines Hub"
+                      className="w-full h-full"
+                    />
+                  </DeviceLightbox>
+                </div>
               </div>
             </motion.div>
 
           </div>
         </div>
-
       </div>
-    </section >
+    </section>
   );
 }

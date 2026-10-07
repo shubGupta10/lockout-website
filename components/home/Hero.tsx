@@ -38,6 +38,11 @@ export default function Hero() {
   const mobileScale = 0.95 + (scrollProgress * 0.20);
   const mobileTranslateY = 10 - (scrollProgress * 100);
 
+  const desktopCenterY = scrollProgress * 40;
+  const desktopSideY = scrollProgress * 40;
+  const desktopLeftX = -(scrollProgress * 120);
+  const desktopRightX = scrollProgress * 120;
+
   // Prevent hydration mismatch by defaulting to light mode images before mount
   const isDark = mounted && resolvedTheme === "dark";
   const imageFolder = isDark ? "heroDarkImages" : "heroWhiteImages";
@@ -95,36 +100,70 @@ export default function Hero() {
 
         <div className="hidden sm:flex relative justify-center items-end w-full max-w-6xl mx-auto -mb-12 md:-mb-16 lg:-mb-24">
 
-          <div className="absolute sm:relative left-1/2 sm:left-auto bottom-0 -translate-x-[115%] sm:translate-x-3 lg:translate-x-4 z-10">
-            <DeviceMockup
-              src={`/assets/${imageFolder}/Screenshot_apps_${appsImageSuffix}.png`}
-              alt="Lockout Global Block list"
-              className="w-[160px] h-[320px] sm:w-[280px] sm:h-[560px] lg:w-[320px] lg:h-[640px]"
-              priority
-            />
-          </div>
+          <motion.div
+            className="absolute sm:relative left-1/2 sm:left-auto bottom-0 -translate-x-[115%] sm:translate-x-3 lg:translate-x-4 z-10"
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+          >
+            <div
+              className="origin-bottom transition-transform duration-75 ease-out"
+              style={{ transform: `translate(${desktopLeftX}px, ${desktopSideY}px)` }}
+            >
+              <DeviceMockup
+                src={`/assets/${imageFolder}/Screenshot_apps_${appsImageSuffix}.png`}
+                alt="Lockout Global Block list"
+                className="w-[160px] h-[320px] sm:w-[280px] sm:h-[560px] lg:w-[320px] lg:h-[640px]"
+                priority
+              />
+            </div>
+          </motion.div>
 
-          <div className="relative z-30">
-            <DeviceMockup
-              src={`/assets/${imageFolder}/Screenshot_initial_${initialImageSuffix}.png`}
-              alt="Lockout New Focus Session"
-              className="w-[200px] h-[400px] sm:w-[320px] sm:h-[640px] lg:w-[380px] lg:h-[760px]"
-              priority
-            />
-          </div>
+          <motion.div
+            className="relative z-30"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.35 }}
+          >
+            <div
+              className="origin-bottom transition-transform duration-75 ease-out"
+              style={{ transform: `translateY(${desktopCenterY}px)` }}
+            >
+              <DeviceMockup
+                src={`/assets/${imageFolder}/Screenshot_initial_${initialImageSuffix}.png`}
+                alt="Lockout New Focus Session"
+                className="w-[200px] h-[400px] sm:w-[320px] sm:h-[640px] lg:w-[380px] lg:h-[760px]"
+                priority
+              />
+            </div>
+          </motion.div>
 
-          <div className="absolute sm:relative right-1/2 sm:right-auto bottom-0 translate-x-[115%] sm:-translate-x-3 lg:-translate-x-4 z-10">
-            <DeviceMockup
-              src={`/assets/${imageFolder}/Screenshot_timer_running_${timerImageSuffix}.png`}
-              alt="Lockout Active Focus Session"
-              className="w-[160px] h-[320px] sm:w-[280px] sm:h-[560px] lg:w-[320px] lg:h-[640px]"
-              priority
-            />
-          </div>
-
+          <motion.div
+            className="absolute sm:relative right-1/2 sm:right-auto bottom-0 translate-x-[115%] sm:-translate-x-3 lg:-translate-x-4 z-10"
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+          >
+            <div
+              className="origin-bottom transition-transform duration-75 ease-out"
+              style={{ transform: `translate(${desktopRightX}px, ${desktopSideY}px)` }}
+            >
+              <DeviceMockup
+                src={`/assets/${imageFolder}/Screenshot_timer_running_${timerImageSuffix}.png`}
+                alt="Lockout Active Focus Session"
+                className="w-[160px] h-[320px] sm:w-[280px] sm:h-[560px] lg:w-[320px] lg:h-[640px]"
+                priority
+              />
+            </div>
+          </motion.div>
         </div>
 
-        <div className="sm:hidden w-full px-4 flex justify-center pb-12 relative z-20">
+        <motion.div
+          className="sm:hidden w-full px-4 flex justify-center pb-12 relative z-20"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        >
           <div
             className="relative w-full max-w-[320px] origin-top transition-transform duration-75 ease-out"
             style={{ transform: `translateY(${mobileTranslateY}px) scale(${mobileScale})` }}
@@ -137,9 +176,12 @@ export default function Hero() {
               priority
             />
           </div>
-        </div>
+        </motion.div>
 
       </div>
+
+      {/* Bottom Gradient Fade for Desktop */}
+      <div className="hidden sm:block absolute bottom-0 inset-x-0 h-32 md:h-48 bg-gradient-to-t from-background to-transparent z-40 pointer-events-none" />
     </section>
   );
 }
