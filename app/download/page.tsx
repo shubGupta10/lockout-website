@@ -98,24 +98,27 @@ export default async function DownloadPage() {
               return (
                 <div 
                   key={releaseItem.id} 
-                  className="flex flex-col md:flex-row md:items-center py-5 border-b border-border group hover:bg-muted transition-colors -mx-4 px-4 rounded-lg"
+                  className="flex flex-row items-center justify-between py-5 border-b border-border group hover:bg-muted transition-colors -mx-4 px-4 rounded-lg"
                 >
-                  <div className="w-32 flex items-center gap-3 mb-2 md:mb-0">
-                    <span className="text-[15px] font-semibold text-foreground">{releaseItem.tag_name}</span>
-                    {isLatest && (
-                      <span className="md:hidden px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase bg-primary text-primary-foreground">Latest</span>
-                    )}
+                  <div className="flex flex-col md:flex-row md:items-center md:gap-4 flex-1">
+                    <div className="w-auto md:w-32 flex items-center gap-3 mb-1 md:mb-0">
+                      <span className="text-[15px] font-semibold text-foreground">{releaseItem.tag_name}</span>
+                      {isLatest && (
+                        <span className="md:hidden px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase bg-primary text-primary-foreground">Latest</span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-[14px] md:text-[15px] text-muted-foreground">{formattedDate}</span>
+                      {isLatest && (
+                        <span className="hidden md:inline-flex px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase bg-primary text-primary-foreground">Latest</span>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex-1 flex items-center gap-3 mb-4 md:mb-0">
-                    <span className="text-[15px] text-muted-foreground">{formattedDate}</span>
-                    {isLatest && (
-                      <span className="hidden md:inline-flex px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase bg-primary text-primary-foreground">Latest</span>
-                    )}
-                  </div>
-                  <div className="w-40 md:text-right">
+                  
+                  <div className="text-right ml-4">
                     <a 
                       href={downloadUrl} 
-                      className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:opacity-90 transition-opacity"
+                      className="inline-flex items-center justify-end gap-1.5 text-[14px] font-semibold text-primary hover:opacity-90 transition-opacity whitespace-nowrap"
                     >
                       <Download className="w-4 h-4" />
                       Download APK
