@@ -17,20 +17,28 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.png",
   },
+  metadataBase: new URL(siteConfig.url),
   openGraph: {
     title: `${siteConfig.name} | Open-Source App Blocker & Focus Timer for Android`,
     description: siteConfig.description,
-    url: "https://lockoutapp.com",
+    url: siteConfig.url,
     siteName: siteConfig.name,
     images: [
       {
         url: "/ogImage.png",
         width: 1200,
         height: 630,
+        alt: `${siteConfig.name} - Open-Source App Blocker & Focus Timer`,
       },
     ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Open-Source App Blocker & Focus Timer for Android`,
+    description: siteConfig.description,
+    images: ["/ogImage.png"],
   },
 };
 

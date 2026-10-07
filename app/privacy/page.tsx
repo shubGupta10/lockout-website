@@ -6,6 +6,9 @@ import { Database, UserX, Ban, Activity, ShieldCheck, ArrowRight } from "lucide-
 export const metadata: Metadata = {
   title: "Privacy Policy | Lockout",
   description: "Learn how Lockout handles your data. Offline-first, no user accounts, local SQLite storage, and anonymized crash reporting via Sentry.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 const keyPrinciples = [

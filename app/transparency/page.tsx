@@ -1,10 +1,11 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Permissions & Transparency | Lockout",
   description: "A plain-English explanation of why Lockout requires deep Android system access and exactly what it is used for.",
+  alternates: {
+    canonical: "/transparency",
+  },
 };
 
 const permissions = [
@@ -71,7 +72,7 @@ export default function TransparencyPage() {
     <div className="w-full min-h-screen bg-background">
       {/* Matches the Hero top padding exactly */}
       <div className="w-full max-w-5xl mx-auto px-6 md:px-12 pt-28 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24">
-        
+
         {/* Centered like the Hero section */}
         <div className="flex flex-col items-center text-center pb-12 sm:pb-16 border-b border-border">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold tracking-[-0.03em] text-foreground w-full max-w-4xl leading-[1.14] mb-4 md:mb-5 text-balance">
@@ -85,7 +86,7 @@ export default function TransparencyPage() {
         <div className="mt-12 flex flex-col gap-10 md:gap-12 text-left">
           {permissions.map((perm, index) => (
             <div key={perm.systemName} className="bg-card p-8 sm:p-10 border border-border rounded-2xl flex flex-col md:flex-row gap-8 md:gap-12">
-              
+
               <div className="md:w-1/3 shrink-0">
                 <h2 className="text-xl font-semibold text-foreground">{index + 1}. {perm.name}</h2>
                 <code className="text-[11px] text-muted-foreground font-mono mt-2 block break-all">{perm.systemName}</code>
@@ -105,7 +106,7 @@ export default function TransparencyPage() {
                   <p className="text-sm text-muted-foreground leading-relaxed">{perm.notUsedFor}</p>
                 </div>
               </div>
-              
+
             </div>
           ))}
         </div>

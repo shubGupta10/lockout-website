@@ -9,6 +9,9 @@ import { fetchReleaseData, fetchAllRelease } from "@/lib/github";
 export const metadata: Metadata = {
   title: `Download ${siteConfig.name} for Android | Official APK`,
   description: "Download the latest verified APK release of Lockout. Offline-first, open-source focus app for Android.",
+  alternates: {
+    canonical: "/download",
+  },
 };
 
 const ESSENTIAL_INFO = [

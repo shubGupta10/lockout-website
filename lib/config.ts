@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Lockout",
   description: "An offline-first, open-source focus app for Android. Block distractions natively and build lasting habits.",
-  url: "https://lockout.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   links: {
     github: "https://github.com/shubGupta10/focus-app",
   },
