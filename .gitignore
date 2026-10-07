@@ -10,6 +10,17 @@
 !.yarn/releases
 !.yarn/versions
 
+LOCKOUT_WEBSITE_RESEARCH_AND_PLAN.md
+LOCKOUT_WEBSITE_RESEARCH_AND_PLAN
+
+WEBSITE_DESIGN_PATTERNS.md
+WEBSITE_DESIGN_PATTERNS
+
+AGENTS.md
+AGENTS
+
+.agents
+
 # testing
 /coverage
 
