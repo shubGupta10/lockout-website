@@ -18,7 +18,7 @@ export default function Features() {
   const imageFolder = isDark ? "heroDarkImages" : "heroWhiteImages";
   const timerImageSuffix = isDark ? "black" : "white";
   const routinesImageSuffix = isDark ? "black" : "white";
-  const shopImageName = isDark ? "ScreenShot_shop_black.png" : "Screenshot_shop_white.png";
+  const shopImageSuffix = isDark ? "black" : "white";
 
   return (
     <section className="w-full bg-background border-b border-border py-24 sm:py-28 md:py-32 overflow-hidden relative">
@@ -103,7 +103,7 @@ export default function Features() {
               {/* Centered Device Showcase */}
               <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
                 <DeviceMockup
-                  src={`/assets/${imageFolder}/${shopImageName}`}
+                  src={`/assets/${imageFolder}/Screenshot_shop_${shopImageSuffix}.png`}
                   alt="Lockout Coin Shop"
                   className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[360px] sm:h-[420px] lg:h-[480px]"
                 />
