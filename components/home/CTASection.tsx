@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Highlight } from "@/components/ui/Highlight";
@@ -9,20 +10,20 @@ export default function CTASection() {
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="w-full bg-muted py-24 md:py-32 overflow-hidden"
+      className="w-full bg-muted border-b border-border py-24 sm:py-28 md:py-32 overflow-hidden"
     >
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-        <motion.div className="max-w-2xl mx-auto text-center flex flex-col items-center"
-          initial={{ opacity: 0, y: 40 }}
+        <motion.div
+          className="max-w-2xl mx-auto text-center flex flex-col items-center"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-
           {/* Heading */}
           <h2
             id="cta-heading"
-            className="text-4xl sm:text-5xl lg:text-[48px] font-semibold tracking-tight text-foreground leading-[1.15] text-balance"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.2] md:leading-[1.15] text-balance"
           >
             Take back your <Highlight>attention</Highlight>
           </h2>
@@ -36,7 +37,7 @@ export default function CTASection() {
           <div className="mt-8 sm:mt-10 w-full sm:w-auto">
             <Link
               href="/download"
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 h-12 px-8 rounded-lg bg-primary text-primary-foreground text-[15px] font-medium shadow-xs hover:opacity-90 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 h-12 px-8 rounded-lg bg-primary text-primary-foreground text-[15px] font-medium shadow-sm hover:opacity-90 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               <span>Download Lockout</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -47,9 +48,8 @@ export default function CTASection() {
           <p className="text-xs sm:text-sm text-muted-foreground mt-5 select-none text-center">
             Free & open source · No account required
           </p>
-
         </motion.div>
       </div>
-    </section >
+    </section>
   );
 }

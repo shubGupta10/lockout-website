@@ -17,9 +17,7 @@ export default function Features() {
 
   const isDark = mounted && resolvedTheme === "dark";
   const imageFolder = isDark ? "heroDarkImages" : "heroWhiteImages";
-  const timerImageSuffix = isDark ? "black" : "white";
-  const routinesImageSuffix = isDark ? "black" : "white";
-  const shopImageSuffix = isDark ? "black" : "white";
+  const imageSuffix = isDark ? "black" : "white";
 
   return (
     <section className="w-full bg-background border-b border-border py-24 sm:py-28 md:py-32 overflow-hidden relative">
@@ -39,127 +37,142 @@ export default function Features() {
         <div className="rounded-[24px] md:rounded-[32px] bg-border border border-border overflow-hidden shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-px">
 
-            <motion.div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="max-w-xl z-10">
-                <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
-                  Native app blocking
-                </h3>
-                <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                  Using Android's native system APIs, Lockout intercepts distracting apps the millisecond you open them. Evaluated 100% locally on your device with zero workarounds.
-                </p>
-              </div>
-              <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
-                  <DeviceLightbox 
-                    src={`/assets/ScreenShot_blocker.jpg`} 
-                    alt="Lockout App Blocker Interception Screen"
-                  >
-                    <DeviceMockup
-                      src={`/assets/ScreenShot_blocker.jpg`}
+            {/* Card 1: Native app blocking */}
+            <div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+              <motion.div
+                className="flex flex-col justify-between h-full"
+                initial={{ opacity: 0, x: -60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="max-w-xl z-10">
+                  <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
+                    Native app blocking
+                  </h3>
+                  <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
+                    Using Android's native system APIs, Lockout intercepts distracting apps the millisecond you open them. Evaluated 100% locally on your device with zero workarounds.
+                  </p>
+                </div>
+                <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
+                  <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                    <DeviceLightbox
+                      src="/assets/ScreenShot_blocker.jpg"
                       alt="Lockout App Blocker Interception Screen"
-                      className="w-full h-full"
-                      imageClassName="object-cover object-bottom"
-                      priority
-                    />
-                  </DeviceLightbox>
+                    >
+                      <DeviceMockup
+                        src="/assets/ScreenShot_blocker.jpg"
+                        alt="Lockout App Blocker Interception Screen"
+                        className="w-full h-full"
+                        imageClassName="object-cover object-bottom"
+                      />
+                    </DeviceLightbox>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
-            <motion.div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-            >
-              <div className="max-w-xl z-10">
-                <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
-                  Focus Sessions
-                </h3>
-                <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                  Start a Focus Session with the interactive orb. Strict mode prevents cancelling the session when the urge to check your phone strikes.
-                </p>
-              </div>
-              <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
-                  <DeviceLightbox 
-                    src={`/assets/${imageFolder}/Screenshot_timer_running_${timerImageSuffix}.png`} 
-                    alt="Lockout Deep Focus Countdown Timer"
-                  >
-                    <DeviceMockup
-                      src={`/assets/${imageFolder}/Screenshot_timer_running_${timerImageSuffix}.png`}
+            {/* Card 2: Focus Sessions */}
+            <div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+              <motion.div
+                className="flex flex-col justify-between h-full"
+                initial={{ opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+              >
+                <div className="max-w-xl z-10">
+                  <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
+                    Focus Sessions
+                  </h3>
+                  <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
+                    Start a Focus Session with the interactive orb. Strict mode prevents cancelling the session when the urge to check your phone strikes.
+                  </p>
+                </div>
+                <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
+                  <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                    <DeviceLightbox
+                      src={`/assets/${imageFolder}/Screenshot_timer_running_${imageSuffix}.png`}
                       alt="Lockout Deep Focus Countdown Timer"
-                      className="w-full h-full"
-                    />
-                  </DeviceLightbox>
+                    >
+                      <DeviceMockup
+                        src={`/assets/${imageFolder}/Screenshot_timer_running_${imageSuffix}.png`}
+                        alt="Lockout Deep Focus Countdown Timer"
+                        className="w-full h-full"
+                      />
+                    </DeviceLightbox>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
-            <motion.div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
-              initial={{ opacity: 0, x: -40, y: 40 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="max-w-xl z-10">
-                <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
-                  Earn Coins
-                </h3>
-                <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                  Turn your productivity into currency. Earn coins for every focused minute and spend them in the Coin Shop to unlock exclusive rewards.
-                </p>
-              </div>
-              <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
-                  <DeviceLightbox 
-                    src={`/assets/${imageFolder}/Screenshot_shop_${shopImageSuffix}.png`} 
-                    alt="Lockout Coin Shop"
-                  >
-                    <DeviceMockup
-                      src={`/assets/${imageFolder}/Screenshot_shop_${shopImageSuffix}.png`}
+            {/* Card 3: Earn Coins */}
+            <div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+              <motion.div
+                className="flex flex-col justify-between h-full"
+                initial={{ opacity: 0, x: -40, y: 40 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="max-w-xl z-10">
+                  <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
+                    Earn Coins
+                  </h3>
+                  <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
+                    Turn your productivity into currency. Earn coins for every focused minute and spend them in the Coin Shop to unlock exclusive rewards.
+                  </p>
+                </div>
+                <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
+                  <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                    <DeviceLightbox
+                      src={`/assets/${imageFolder}/Screenshot_shop_${imageSuffix}.png`}
                       alt="Lockout Coin Shop"
-                      className="w-full h-full"
-                    />
-                  </DeviceLightbox>
+                    >
+                      <DeviceMockup
+                        src={`/assets/${imageFolder}/Screenshot_shop_${imageSuffix}.png`}
+                        alt="Lockout Coin Shop"
+                        className="w-full h-full"
+                      />
+                    </DeviceLightbox>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
-            <motion.div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card"
-              initial={{ opacity: 0, x: 40, y: 40 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-            >
-              <div className="max-w-xl z-10">
-                <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
-                  Routines
-                </h3>
-                <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                  Schedule recurring Routines for workday deep work, study blocks, or bedtime. Lockout automatically engages your blocklists on time, complete with ambient pre-session warnings.
-                </p>
-              </div>
-              <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
-                <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
-                  <DeviceLightbox 
-                    src={`/assets/${imageFolder}/Screenshot_routines_${routinesImageSuffix}.png`} 
-                    alt="Lockout Home & Routines Hub"
-                  >
-                    <DeviceMockup
-                      src={`/assets/${imageFolder}/Screenshot_routines_${routinesImageSuffix}.png`}
-                      alt="Lockout Home & Routines Hub"
-                      className="w-full h-full"
-                    />
-                  </DeviceLightbox>
+            {/* Card 4: Routines */}
+            <div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+              <motion.div
+                className="flex flex-col justify-between h-full"
+                initial={{ opacity: 0, x: 40, y: 40 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+              >
+                <div className="max-w-xl z-10">
+                  <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
+                    Routines
+                  </h3>
+                  <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
+                    Schedule recurring Routines for workday deep work, study blocks, or bedtime. Lockout automatically engages your blocklists on time, complete with ambient pre-session warnings.
+                  </p>
                 </div>
-              </div>
-            </motion.div>
+                <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
+                  <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                    <DeviceLightbox
+                      src={`/assets/${imageFolder}/Screenshot_routines_${imageSuffix}.png`}
+                      alt="Lockout Home & Routines Hub"
+                    >
+                      <DeviceMockup
+                        src={`/assets/${imageFolder}/Screenshot_routines_${imageSuffix}.png`}
+                        alt="Lockout Home & Routines Hub"
+                        className="w-full h-full"
+                      />
+                    </DeviceLightbox>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
 
           </div>
         </div>

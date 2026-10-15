@@ -9,74 +9,136 @@ interface DeviceMockupProps {
   showBottomEdge?: boolean;
 }
 
-export function DeviceMockup({ 
-  src, 
-  alt, 
-  className = "", 
-  imageClassName = "object-cover object-top", 
+export function DeviceMockup({
+  src,
+  alt,
+  className = "",
+  imageClassName = "object-cover object-top",
   priority = false,
-  showBottomEdge = false 
+  showBottomEdge = false,
 }: DeviceMockupProps) {
-  
-  const bottomClasses = showBottomEdge 
-    ? "border-b-[6px] md:border-b-[12px] rounded-b-[2.5rem] md:rounded-b-[3rem]" 
-    : "";
-    
-  const innerBottomClasses = showBottomEdge
-    ? "rounded-b-[1.8rem] md:rounded-b-[2.3rem]"
-    : "";
+  // Unified outer metallic chassis rounding
+  const outerRounding = showBottomEdge
+    ? "rounded-[3rem]"
+    : "rounded-t-[3rem] rounded-b-none";
+
+  // Unified inner black glass bezel padding
+  const bezelPadding = showBottomEdge
+    ? "p-[10px]"
+    : "pt-[10px] px-[10px] pb-0";
+
+  // Unified screen viewport rounding
+  const screenRounding = showBottomEdge
+    ? "rounded-[2.4rem]"
+    : "rounded-t-[2.4rem] rounded-b-none";
 
   return (
-    <div className={`relative flex flex-col bg-zinc-950 border-t-[6px] border-x-[6px] md:border-t-[12px] md:border-x-[12px] border-zinc-950 rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-2xl overflow-hidden shrink-0 ring-1 ring-border/20 ${bottomClasses} ${className}`}>
-      
-      {/* Outer edge highlight */}
-      <div className="absolute inset-0 rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-[inset_0_0_2px_rgba(255,255,255,0.4)] pointer-events-none z-50" />
+    <div className={`relative select-none shrink-0 ${className}`}>
+      {/* PIXEL HARDWARE BUTTONS (Right Rail: Power on Top, Volume Below) */}
+      {/* Power Button */}
+      <div
+        aria-hidden="true"
+        className="absolute -right-[3px] top-[22%] w-[3.5px] h-11 bg-gradient-to-b from-zinc-500 via-zinc-700 to-zinc-800 rounded-r-sm shadow-sm z-0"
+      />
+      {/* Volume Rocker */}
+      <div
+        aria-hidden="true"
+        className="absolute -right-[3px] top-[35%] w-[3.5px] h-20 bg-gradient-to-b from-zinc-500 via-zinc-700 to-zinc-800 rounded-r-sm shadow-sm z-0"
+      />
 
-      {/* Dynamic Island / Notch */}
-      <div className="absolute top-2 md:top-3 inset-x-0 flex justify-center z-40">
-        <div className="w-[30%] md:w-[35%] h-5 md:h-7 bg-black rounded-full flex items-center justify-end px-2 md:px-3 shadow-[inset_0_0_1px_rgba(255,255,255,0.1)]">
-          {/* Camera Lens */}
-          <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-zinc-900 shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]" />
-        </div>
-      </div>
+      {/* OUTER ANODIZED ALUMINUM CHASSIS */}
+      <div
+        className={`relative w-full h-full flex flex-col bg-gradient-to-b from-zinc-600 via-zinc-800 to-zinc-900 p-[2.5px] shadow-[0_20px_50px_rgba(0,0,0,0.35)] ${outerRounding}`}
+      >
+        {/* Metallic rim specular highlight */}
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 pointer-events-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.35)] z-50 ${outerRounding}`}
+        />
 
-      <div className={`relative w-full h-full overflow-hidden rounded-t-[1.8rem] md:rounded-t-[2.3rem] ${innerBottomClasses} bg-white dark:bg-[#141414] flex flex-col`}>
-        {/* Fake Status Bar */}
-        <div className="absolute top-0 inset-x-0 h-7 md:h-9 flex items-center justify-between px-5 md:px-6 z-40 pointer-events-none">
-          {/* Time */}
-          <span className="text-[9px] md:text-[10px] font-semibold text-foreground/80 w-[30%] pl-0.5 mt-0.5">9:41</span>
-          
-          {/* Icons */}
-          <div className="flex items-center justify-end gap-1 md:gap-1.5 w-[30%] pr-0.5">
-            {/* Cellular */}
-            <div className="flex items-end gap-[1px] md:gap-[1.5px] h-2 md:h-2.5">
-              <div className="w-[1.5px] h-1 bg-foreground/80 rounded-[1px]" />
-              <div className="w-[1.5px] h-1.5 bg-foreground/80 rounded-[1px]" />
-              <div className="w-[1.5px] h-2 bg-foreground/80 rounded-[1px]" />
-              <div className="w-[1.5px] h-full bg-foreground/80 rounded-[1px]" />
-            </div>
-            {/* Wifi */}
-            <svg className="w-3 h-3 md:w-3.5 md:h-3.5 text-foreground/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-            {/* Battery */}
-            <div className="w-[14px] md:w-[16px] h-2 md:h-[9px] border border-foreground/60 rounded-[2px] md:rounded-[3px] p-[1px] relative flex items-center">
-              <div className="w-[80%] h-full bg-foreground/80 rounded-[1px]" />
-              <div className="absolute -right-[2px] w-[1.5px] h-[4px] bg-foreground/60 rounded-r-[1px]" />
-            </div>
-          </div>
-        </div>
-
-        {/* Status bar safe area - Reduced to tightly hug the notch */}
-        <div className="w-full h-7 md:h-9 shrink-0" />
-        
-        <div className="relative w-full h-full">
-          <Image 
-            src={src}
-            alt={alt}
-            fill
-            sizes="(max-width: 1024px) 300px, 400px"
-            className={imageClassName}
-            priority={priority}
+        {/* INNER BLACK GLASS BEZEL */}
+        <div
+          className={`relative w-full h-full flex flex-col bg-zinc-950 ${bezelPadding} ${outerRounding} overflow-hidden`}
+        >
+          {/* Top Earpiece Speaker Slit */}
+          <div
+            aria-hidden="true"
+            className="absolute top-[4px] left-1/2 -translate-x-1/2 w-14 h-[2px] bg-zinc-800/90 rounded-full z-40"
           />
+
+          {/* SCREEN VIEWPORT */}
+          <div
+            className={`relative w-full h-full overflow-hidden ${screenRounding} bg-white dark:bg-[#121212] flex flex-col ring-1 ring-white/10`}
+          >
+            {/* PIXEL HOLE-PUNCH CAMERA + ANDROID STATUS BAR */}
+            <div className="relative w-full h-10 pt-1 flex items-center justify-between px-7 z-40 shrink-0 pointer-events-none">
+              {/* Left: Google Pixel Marketing Time (9:30) */}
+              <span className="text-[12px] font-semibold tracking-tight text-foreground/85 leading-none">
+                9:30
+              </span>
+
+              {/* Center: Pixel Hole-Punch Selfie Camera */}
+              <div className="absolute left-1/2 -translate-x-1/2 top-2.5 w-3.5 h-3.5 rounded-full bg-black ring-1 ring-white/15 flex items-center justify-center shadow-inner">
+                {/* Subtle sapphire lens glint */}
+                <div className="w-1.5 h-1.5 rounded-full bg-indigo-950/90 ring-[0.5px] ring-blue-400/35" />
+              </div>
+
+              {/* Right: Android Status Icons (Wi-Fi, 5G Cellular Triangle, Vertical Battery) */}
+              <div className="flex items-center gap-1.5 text-foreground/85">
+                {/* Android Solid Wi-Fi Wedge */}
+                <svg
+                  className="w-3.5 h-3.5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 21L23.6 7C20.3 4.5 16.3 3 12 3C7.7 3 3.7 4.5 0.4 7L12 21Z" />
+                </svg>
+
+                {/* Android Solid Signal Triangle */}
+                <svg
+                  className="w-3.5 h-3.5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M2 22h20V2L2 22z" />
+                </svg>
+
+                {/* Android Vertical Battery Icon */}
+                <div className="flex flex-col items-center">
+                  <div className="w-1.5 h-[1.5px] bg-foreground/75 rounded-t-[1px]" />
+                  <div className="w-2 h-3 border-[1.2px] border-foreground/85 rounded-[2px] p-[0.5px] flex items-end">
+                    <div className="w-full h-[80%] bg-foreground/85 rounded-[0.5px]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* APP SCREENSHOT */}
+            <div className="relative w-full flex-1">
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes="(max-width: 1024px) 300px, 400px"
+                className={imageClassName}
+                priority={priority}
+              />
+            </div>
+
+            {/* Subtle Screen Glass Glare */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.06] pointer-events-none z-30"
+            />
+
+            {/* Android Bottom Gesture Navigation Bar (when full phone is shown) */}
+            {showBottomEdge && (
+              <div
+                aria-hidden="true"
+                className="absolute bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-foreground/30 rounded-full z-40 pointer-events-none"
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
