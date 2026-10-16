@@ -33,7 +33,6 @@ export default function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Hide if scrolling down and past 100px. Show if scrolling up.
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
         setMobileMenuOpen(false);
@@ -86,6 +85,10 @@ export default function Header() {
     });
   };
 
+  // if (pathname === "/feedback") {
+  //   return null;
+  // }
+
   return (
     <div
       className={`fixed top-0 inset-x-0 w-full z-50 px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none transition-transform duration-300 ease-in-out ${isVisible ? "translate-y-0" : "-translate-y-[150%]"
@@ -124,8 +127,8 @@ export default function Header() {
                   href={link.href}
                   onMouseEnter={() => setHoveredLink(link.href)}
                   className={`relative px-4 py-2 text-[15px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-full ${isActive
-                      ? "font-semibold text-primary"
-                      : "font-medium text-muted-foreground hover:text-foreground"
+                    ? "font-semibold text-primary"
+                    : "font-medium text-muted-foreground hover:text-foreground"
                     }`}
                 >
                   {isHovered && (
@@ -191,8 +194,8 @@ export default function Header() {
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={`block py-3 px-4 rounded-xl text-[16px] transition-colors ${isActive
-                          ? "font-semibold text-primary bg-muted"
-                          : "font-medium text-muted-foreground hover:text-foreground hover:bg-muted"
+                        ? "font-semibold text-primary bg-muted"
+                        : "font-medium text-muted-foreground hover:text-foreground hover:bg-muted"
                         }`}
                     >
                       {link.name}
