@@ -15,6 +15,68 @@ const desktopNav = [
   { name: "Privacy", href: "/privacy" },
 ];
 
+export function ThemeToggle({ className }: { className?: string }) {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="w-9 h-9" />;
+  }
+
+  const isDark = resolvedTheme === "dark";
+
+  const toggleTheme = (e: React.MouseEvent) => {
+    const newTheme = isDark ? "light" : "dark";
+
+    if (!document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+
+    const x = e.clientX;
+    const y = e.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      document.documentElement.animate(
+        { clipPath },
+        {
+          duration: 500,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className={className || "p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer flex items-center justify-center"}
+      aria-label="Toggle Dark Mode"
+    >
+      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+    </button>
+  );
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -85,9 +147,9 @@ export default function Header() {
     });
   };
 
-  // if (pathname === "/feedback") {
-  //   return null;
-  // }
+  if (pathname === "/admin/feedback") {
+    return null;
+  }
 
   return (
     <div
@@ -150,16 +212,7 @@ export default function Header() {
           {/* Right Actions (Theme Toggle & Mobile Menu Button) */}
           <div className="flex items-center gap-2">
             <div className="hidden md:flex w-9 h-9 items-center justify-center">
-              {mounted && (
-                <button
-                  type="button"
-                  onClick={toggleTheme}
-                  className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
-                  aria-label="Toggle Dark Mode"
-                >
-                  {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                </button>
-              )}
+              <ThemeToggle />
             </div>
 
             <button

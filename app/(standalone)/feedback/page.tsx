@@ -104,7 +104,7 @@ export default function FeedbackPage() {
   const types: { id: FeedbackType; label: string }[] = [
     { id: "bug", label: "Bug report" },
     { id: "feature", label: "Feature idea" },
-    { id: "testimonial", label: "Experience" },
+    { id: "testimonial", label: "Testimonial" },
   ];
 
   return (

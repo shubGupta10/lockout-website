@@ -59,3 +59,31 @@ export async function POST(req: Request) {
         );
     }
 }
+
+export async function GET(req: Request) {
+    try {
+        const { searchParams } = new URL(req.url);
+        const adminKey = req.headers.get("x-admin-key") || searchParams.get("key");
+
+        const expectedKey = process.env.ADMIN_KEY!;
+
+        if (!expectedKey || adminKey !== expectedKey) {
+            return NextResponse.json({
+                error: "Unauthorized"
+            }, { status: 401 })
+        }
+        const fetchAllFeedback = await sql`
+        SELECT id, type, message, email, device_info, created_at FROM feedback ORDER BY created_at DESC
+        `;
+        return NextResponse.json({
+            message: "Fetch ALL Feedbacks",
+            feedbacks: fetchAllFeedback,
+        }, { status: 200 })
+    } catch (error) {
+        console.error("GET feedback error:", error);
+        return NextResponse.json(
+            { error: "Internal server error" },
+            { status: 500 }
+        );
+    }
+}
