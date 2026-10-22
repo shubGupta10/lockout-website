@@ -48,7 +48,7 @@ export default async function DownloadPage() {
   return (
     <div className="w-full min-h-screen bg-background">
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12 pt-28 sm:pt-32 md:pt-40 pb-16 sm:pb-24">
-        
+
         <header className="pb-16">
           <h1 className="text-4xl sm:text-[44px] md:text-5xl font-semibold text-foreground tracking-tight leading-[1.15]">
             Download Lockout
@@ -57,23 +57,29 @@ export default async function DownloadPage() {
             Latest release: <span className="font-semibold text-foreground">{release.version}</span> &middot; {release.date}
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center">
-            <a 
-              href={release.downloadUrl} 
-              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-primary text-primary-foreground text-[15px] font-medium whitespace-nowrap hover:opacity-90 transition-opacity shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
-              <Download className="w-4 h-4 shrink-0" />
-              <span>Download APK</span>
-            </a>
-            <a 
-              href={siteConfig.release.githubReleaseUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2.5 h-12 px-8 rounded-lg text-foreground text-[15px] font-medium border border-border hover:bg-muted transition-colors shadow-sm"
-            >
-              <FontAwesomeIcon icon={faGithub} className="w-4 h-4 text-muted-foreground shrink-0" />
-              <span>View Source</span>
-            </a>
+          <div className="mt-10 flex flex-col gap-3">
+            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+              <a
+                href={release.downloadUrl}
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-primary text-primary-foreground text-[15px] font-medium whitespace-nowrap hover:opacity-90 transition-opacity shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                <Download className="w-4 h-4 shrink-0" />
+                <span>Download APK</span>
+              </a>
+              <a
+                href={siteConfig.release.githubReleaseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 h-12 px-8 rounded-lg text-foreground text-[15px] font-medium border border-border hover:bg-muted transition-colors shadow-sm"
+              >
+                <FontAwesomeIcon icon={faGithub} className="w-4 h-4 text-muted-foreground shrink-0" />
+                <span>View Source</span>
+              </a>
+            </div>
+
+            <p className="text-[13px] text-muted-foreground pt-1">
+              Requires Android 10+
+            </p>
           </div>
         </header>
 
@@ -90,14 +96,14 @@ export default async function DownloadPage() {
             {releases?.map((releaseItem: any, index: number) => {
               const apkAsset = releaseItem.assets?.find((asset: any) => asset.name.endsWith(".apk"));
               const downloadUrl = apkAsset?.browser_download_url ?? releaseItem.html_url;
-              const formattedDate = releaseItem.published_at 
+              const formattedDate = releaseItem.published_at
                 ? new Date(releaseItem.published_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
                 : "Unknown date";
               const isLatest = index === 0;
 
               return (
-                <div 
-                  key={releaseItem.id} 
+                <div
+                  key={releaseItem.id}
                   className="flex flex-row items-center justify-between py-5 border-b border-border group hover:bg-muted transition-colors -mx-4 px-4 rounded-lg"
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:gap-4 flex-1">
@@ -114,10 +120,10 @@ export default async function DownloadPage() {
                       )}
                     </div>
                   </div>
-                  
+
                   <div className="text-right ml-4">
-                    <a 
-                      href={downloadUrl} 
+                    <a
+                      href={downloadUrl}
                       className="inline-flex items-center justify-end gap-1.5 text-[14px] font-semibold text-primary hover:opacity-90 transition-opacity whitespace-nowrap"
                     >
                       <Download className="w-4 h-4" />
@@ -139,17 +145,17 @@ export default async function DownloadPage() {
               </p>
               {info.link && (
                 info.link.isExternal ? (
-                  <a 
-                    href={info.link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href={info.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-[15px] font-medium text-primary hover:opacity-90 transition-opacity group w-fit"
                   >
                     {info.link.label} <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </a>
                 ) : (
-                  <Link 
-                    href={info.link.href} 
+                  <Link
+                    href={info.link.href}
                     className="inline-flex items-center gap-1.5 text-[15px] font-medium text-primary hover:opacity-90 transition-opacity group w-fit"
                   >
                     {info.link.label} <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
