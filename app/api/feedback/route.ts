@@ -1,5 +1,7 @@
 import { sql } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { verifySessionToken } from "@/lib/auth";
 
 export async function POST(req: Request) {
     try {
@@ -62,15 +64,16 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
     try {
-        const { searchParams } = new URL(req.url);
-        const adminKey = req.headers.get("x-admin-key") || searchParams.get("key");
-
-        const expectedKey = process.env.ADMIN_KEY!;
-
-        if (!expectedKey || adminKey !== expectedKey) {
-            return NextResponse.json({
-                error: "Unauthorized"
-            }, { status: 401 })
+        const cookieStore = await cookies();
+        const sessionToken = cookieStore.get("admin_session")?.value;
+        const isCookieValid = verifySessionToken(sessionToken);
+        const adminKey = req.headers.get("x-admin-key");
+        const isKeyValid = process.env.ADMIN_KEY && adminKey === process.env.ADMIN_KEY;
+        if (!isCookieValid && !isKeyValid) {
+            return NextResponse.json(
+                { error: "Unauthorized" },
+                { status: 401 }
+            );
         }
         const fetchAllFeedback = await sql`
         SELECT id, type, message, email, device_info, created_at FROM feedback ORDER BY created_at DESC

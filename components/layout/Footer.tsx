@@ -1,8 +1,21 @@
+"use client"
+
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import Image from "next/image";
+import { useLongPress } from "use-long-press";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+
+  const router = useRouter();
+  const click = useLongPress(() => {
+    router.push("/admin/feedback");
+  }, {
+    threshold: 1200,
+    cancelOnMovement: true
+  })
+
   return (
     <footer className="w-full bg-background">
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-16 sm:py-20 flex flex-col md:flex-row justify-between gap-12">
@@ -46,7 +59,7 @@ export default function Footer() {
       <div className="w-full border-t border-border">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[13px] text-muted-foreground font-medium">
-            &copy; {new Date().getFullYear()} Lockout App
+            &copy; {new Date().getFullYear()} <span {...click()} className="cursor-pointer" >Lockout</span> App
           </p>
           <p className="text-[13px] text-muted-foreground">
             Open Source under MIT License

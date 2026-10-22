@@ -10,7 +10,6 @@ import FeedbackCard from "@/components/admin/FeedbackCard";
 import { FeedbackItem, FilterTab } from "@/components/admin/types";
 
 export default function AdminFeedbackPage() {
-  const [adminKey, setAdminKey] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [initializing, setInitializing] = useState(true);
   const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([]);
@@ -20,21 +19,15 @@ export default function AdminFeedbackPage() {
   const [activeTab, setActiveTab] = useState<FilterTab>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const fetchFeedbacks = useCallback(async (key: string) => {
+  const loadFeedbacks = useCallback(async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const res = await fetch("/api/feedback", {
-        headers: {
-          "x-admin-key": key,
-        },
-      });
+      const res = await fetch("/api/feedback");
 
       if (res.status === 401) {
-        setError("Invalid admin key. Check your ADMIN_KEY in .env");
         setIsAuthenticated(false);
-        sessionStorage.removeItem("ADMIN_KEY");
         return;
       }
 
@@ -45,8 +38,6 @@ export default function AdminFeedbackPage() {
       const data = await res.json();
       setFeedbacks(data.feedbacks || []);
       setIsAuthenticated(true);
-      sessionStorage.setItem("ADMIN_KEY", key);
-      setAdminKey(key);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Network error";
       setError(message);
@@ -57,23 +48,46 @@ export default function AdminFeedbackPage() {
   }, []);
 
   useEffect(() => {
-    const savedKey = sessionStorage.getItem("ADMIN_KEY");
-    if (savedKey) {
-      setAdminKey(savedKey);
-      fetchFeedbacks(savedKey);
-    } else {
-      setInitializing(false);
-    }
-  }, [fetchFeedbacks]);
+    loadFeedbacks();
+  }, [loadFeedbacks]);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("ADMIN_KEY");
-    setAdminKey("");
-    setIsAuthenticated(false);
-    setFeedbacks([]);
-    setActiveTab("all");
-    setSearchQuery("");
+  const handleLogin = async (email: string, pass: string) => {
+    setLoading(true);
     setError(null);
+
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password: pass }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Authentication failed");
+        return;
+      }
+
+      setIsAuthenticated(true);
+      await loadFeedbacks();
+    } catch {
+      setError("Network error logging in");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/logout", { method: "POST" });
+    } finally {
+      setIsAuthenticated(false);
+      setFeedbacks([]);
+      setActiveTab("all");
+      setSearchQuery("");
+      setError(null);
+    }
   };
 
   const counts = useMemo(() => {
@@ -110,7 +124,7 @@ export default function AdminFeedbackPage() {
     });
   }, [feedbacks, activeTab, searchQuery]);
 
-  // Prevent flashing the login gate while checking sessionStorage on mount
+  // Prevent flashing the login gate while checking session on mount
   if (initializing) {
     return (
       <section className="w-full min-h-screen bg-background flex items-center justify-center">
@@ -122,7 +136,7 @@ export default function AdminFeedbackPage() {
   if (!isAuthenticated) {
     return (
       <FeedbackGate
-        onUnlock={fetchFeedbacks}
+        onLogin={handleLogin}
         loading={loading}
         error={error}
       />
@@ -149,7 +163,7 @@ export default function AdminFeedbackPage() {
 
             <button
               type="button"
-              onClick={() => fetchFeedbacks(adminKey)}
+              onClick={() => loadFeedbacks()}
               disabled={loading}
               title="Refresh submissions"
               className="h-10 px-3.5 rounded-xl border border-border bg-muted hover:bg-card text-xs sm:text-sm font-medium text-foreground transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
@@ -161,11 +175,11 @@ export default function AdminFeedbackPage() {
             <button
               type="button"
               onClick={handleLogout}
-              title="Lock session"
+              title="Log out"
               className="h-10 px-3.5 rounded-xl border border-border bg-muted hover:bg-card text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               <LogOut className="w-3.5 h-3.5" />
-              <span>Lock</span>
+              <span>Log out</span>
             </button>
           </div>
         </div>
