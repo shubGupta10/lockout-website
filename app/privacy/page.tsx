@@ -5,7 +5,7 @@ import { Database, UserX, Ban, Activity, ShieldCheck, ArrowRight } from "lucide-
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Lockout",
-  description: "Learn how Lockout handles your data. Offline-first, no user accounts, local SQLite storage, and anonymized crash reporting via Sentry.",
+  description: "Learn how Lockout handles your data. Offline-first, no user accounts, local SQLite storage, and zero telemetry.",
   alternates: {
     canonical: "/privacy",
   },
@@ -28,9 +28,9 @@ const keyPrinciples = [
     description: "We do not embed third-party advertising SDKs or behavioral user tracking libraries (such as Google Analytics, Mixpanel, or Meta Pixel).",
   },
   {
-    icon: Activity,
-    title: "Technical Crash Reports Only",
-    description: "To fix crashes, Lockout uses Sentry to collect strictly technical diagnostics (device model, Android OS version, and stack traces) when a crash occurs.",
+    icon: ShieldCheck,
+    title: "Zero Telemetry or Logs",
+    description: "Lockout contains zero crash reporters, remote loggers, or telemetry SDKs. The application runs completely self-contained on your device.",
   },
 ];
 
@@ -124,18 +124,10 @@ export default function PrivacyPage() {
 
             <section className="space-y-3">
               <h3 className="text-xl font-semibold text-foreground tracking-tight">
-                3. Technical Crash Diagnostics (Sentry)
+                3. Zero Telemetry & Crash Reporting
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                To identify fatal exceptions and maintain reliability across thousands of Android OEM configurations, Lockout integrates Sentry for error tracking. Sentry collects strictly technical diagnostic metrics only when an application crash occurs:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-[15px] text-muted-foreground pl-2 mt-2">
-                <li>Device hardware model and manufacturer</li>
-                <li>Android OS version and API level</li>
-                <li>Stack trace indicating the exact source file and line where the exception occurred</li>
-              </ul>
-              <p className="text-[15px] text-muted-foreground leading-[1.75] mt-4">
-                Sentry is explicitly configured to strip Personally Identifiable Information (PII). We never collect or transmit your IP address, device location, browsing data, or the names of your installed apps.
+                Lockout does not integrate any third-party error monitoring, telemetry, or crash-reporting SDKs. The application operates entirely self-contained without transmitting error logs, stack traces, or diagnostic data to external servers.
               </p>
             </section>
 
@@ -165,7 +157,7 @@ export default function PrivacyPage() {
                 5. Third-Party Integrations
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                Sentry is our sole third-party SDK. Lockout contains zero advertising frameworks, tracking cookies, commercial data brokers, or behavioral analytics vendors.
+                Lockout contains zero third-party SDKs, advertising frameworks, tracking cookies, commercial data brokers, or behavioral analytics vendors.
               </p>
             </section>
 
