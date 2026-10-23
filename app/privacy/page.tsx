@@ -5,7 +5,7 @@ import { Database, UserX, Ban, Activity, ShieldCheck, ArrowRight } from "lucide-
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Lockout",
-  description: "Learn how Lockout handles your data. Offline-first, no user accounts, local SQLite storage, and zero telemetry.",
+  description: "Learn how Lockout handles your data. Offline-first, no user accounts, local SQLite storage, and privacy-preserving anonymous telemetry.",
   alternates: {
     canonical: "/privacy",
   },
@@ -24,13 +24,13 @@ const keyPrinciples = [
   },
   {
     icon: Ban,
-    title: "Zero Ad or Analytics SDKs",
-    description: "We do not embed third-party advertising SDKs or behavioral user tracking libraries (such as Google Analytics, Mixpanel, or Meta Pixel).",
+    title: "Zero Ads or Data Brokers",
+    description: "We do not embed third-party advertising SDKs, commercial data brokers, or behavioral tracking libraries (such as Google Analytics or Meta Pixel).",
   },
   {
     icon: ShieldCheck,
-    title: "Zero Telemetry or Logs",
-    description: "Lockout contains zero crash reporters, remote loggers, or telemetry SDKs. The application runs completely self-contained on your device.",
+    title: "Privacy-Preserving Telemetry",
+    description: "We use Aptabase, an open-source analytics platform, to measure high-level events (app opens, session completions). Zero personal data or IP addresses collected. Fully toggleable in Settings.",
   },
 ];
 
@@ -124,10 +124,13 @@ export default function PrivacyPage() {
 
             <section className="space-y-3">
               <h3 className="text-xl font-semibold text-foreground tracking-tight">
-                3. Zero Telemetry & Crash Reporting
+                3. Privacy-Preserving Telemetry & Operational Analytics
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                Lockout does not integrate any third-party error monitoring, telemetry, or crash-reporting SDKs. The application operates entirely self-contained without transmitting error logs, stack traces, or diagnostic data to external servers.
+                Lockout integrates Aptabase, an open-source, privacy-first analytics platform. We strictly use it to measure aggregated operational events (such as app opens, focus session start and completion counts, and app versions) to help us gauge feature usage and identify stability issues.
+              </p>
+              <p className="text-[15px] text-muted-foreground leading-[1.75]">
+                <strong>Aptabase does not collect personal data, store IP addresses, or use advertising identifiers.</strong> Telemetry is fully optional: you can easily enable or disable anonymous usage data at any time during onboarding or under <span className="font-semibold text-foreground">Settings &rarr; About & Support</span>.
               </p>
             </section>
 
@@ -157,7 +160,7 @@ export default function PrivacyPage() {
                 5. Third-Party Integrations
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                Lockout contains zero third-party SDKs, advertising frameworks, tracking cookies, commercial data brokers, or behavioral analytics vendors.
+                Lockout does not partner with commercial data brokers, ad networks, or user profiling vendors. Our only external operational tool is Aptabase, which operates under strict privacy-preserving standards (GDPR, CCPA, and PECR compliant).
               </p>
             </section>
 
