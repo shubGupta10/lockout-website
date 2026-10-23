@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/config";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,6 +59,7 @@ export default function RootLayout({
         >
           <Header />
           <main className="flex-1 flex flex-col">
+            <Analytics />
             {children}
           </main>
           <Footer />
