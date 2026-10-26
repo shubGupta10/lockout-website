@@ -43,6 +43,29 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: siteConfig.name,
+  operatingSystem: "Android 10+",
+  applicationCategory: "ProductivityApplication",
+  description: siteConfig.description,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  url: siteConfig.url,
+  downloadUrl: siteConfig.release.githubReleaseUrl,
+  license: "https://www.gnu.org/licenses/gpl-3.0.html",
+  softwareVersion: siteConfig.release.version,
+  author: {
+    "@type": "Person",
+    name: "Shubham Kumar Gupta",
+    url: "https://github.com/shubGupta10",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,6 +73,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
         <ThemeProvider
           attribute="class"
