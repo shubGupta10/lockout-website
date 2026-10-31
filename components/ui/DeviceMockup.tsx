@@ -6,6 +6,7 @@ interface DeviceMockupProps {
   className?: string;
   imageClassName?: string;
   priority?: boolean;
+  loading?: "eager" | "lazy";
   showBottomEdge?: boolean;
 }
 
@@ -15,6 +16,7 @@ export function DeviceMockup({
   className = "",
   imageClassName = "object-cover object-top",
   priority = false,
+  loading,
   showBottomEdge = false,
 }: DeviceMockupProps) {
   // Unified outer metallic chassis rounding
@@ -122,6 +124,7 @@ export function DeviceMockup({
                 sizes="(max-width: 1024px) 300px, 400px"
                 className={imageClassName}
                 priority={priority}
+                loading={loading ?? (priority ? "eager" : undefined)}
               />
             </div>
 

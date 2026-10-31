@@ -62,7 +62,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} <span {...click()} className="cursor-pointer" >Lockout</span> App
           </p>
           <p className="text-[13px] text-muted-foreground">
-            Open Source under MIT License
+            Open Source under GNU GPL-3.0 License
           </p>
         </div>
       </div>

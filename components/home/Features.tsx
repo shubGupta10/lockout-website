@@ -174,6 +174,74 @@ export default function Features() {
               </motion.div>
             </div>
 
+            {/* Card 5: Progress & Streaks */}
+            <div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+              <motion.div
+                className="flex flex-col justify-between h-full"
+                initial={{ opacity: 0, x: -40, y: 40 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="max-w-xl z-10">
+                  <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
+                    Progress & Streaks
+                  </h3>
+                  <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
+                    Track your daily deep focus hours, weekly trends, and build unstoppable streaks. All analytics are computed and stored purely in a local SQLite database on your device.
+                  </p>
+                </div>
+                <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
+                  <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                    <DeviceLightbox
+                      src={`/assets/${imageFolder}/Screenshot_progress_${imageSuffix}.png`}
+                      alt="Lockout Focus Progress & Streaks"
+                    >
+                      <DeviceMockup
+                        src={`/assets/${imageFolder}/Screenshot_progress_${imageSuffix}.png`}
+                        alt="Lockout Focus Progress & Streaks"
+                        className="w-full h-full"
+                      />
+                    </DeviceLightbox>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Card 6: Custom Blocklists */}
+            <div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
+              <motion.div
+                className="flex flex-col justify-between h-full"
+                initial={{ opacity: 0, x: 40, y: 40 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+              >
+                <div className="max-w-xl z-10">
+                  <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
+                    Custom Blocklists
+                  </h3>
+                  <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
+                    Quickly search, filter, and choose exactly which apps to block. Adapts seamlessly to your Android system's dark or light theme with zero lag.
+                  </p>
+                </div>
+                <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
+                  <div className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] h-[400px] sm:h-[460px] lg:h-[500px]">
+                    <DeviceLightbox
+                      src={`/assets/${imageFolder}/Screenshot_apps_${imageSuffix}.png`}
+                      alt="Lockout App Blocklist Selection"
+                    >
+                      <DeviceMockup
+                        src={`/assets/${imageFolder}/Screenshot_apps_${imageSuffix}.png`}
+                        alt="Lockout App Blocklist Selection"
+                        className="w-full h-full"
+                      />
+                    </DeviceLightbox>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
           </div>
         </div>
       </div>

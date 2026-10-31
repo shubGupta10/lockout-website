@@ -105,6 +105,7 @@ export default function Hero() {
                 alt="Lockout Global Block list"
                 className="w-[240px] md:w-[280px] lg:w-[320px] aspect-[1/2.16]"
                 priority
+                loading="eager"
               />
             </motion.div>
           </motion.div>
@@ -124,6 +125,7 @@ export default function Hero() {
                 alt="Lockout New Focus Session"
                 className="w-[280px] md:w-[320px] lg:w-[380px] aspect-[1/2.16]"
                 priority
+                loading="eager"
               />
             </motion.div>
           </motion.div>
@@ -143,6 +145,7 @@ export default function Hero() {
                 alt="Lockout Active Focus Session"
                 className="w-[240px] md:w-[280px] lg:w-[320px] aspect-[1/2.16]"
                 priority
+                loading="eager"
               />
             </motion.div>
           </motion.div>
@@ -165,6 +168,7 @@ export default function Hero() {
               className="w-full aspect-[1/2.16]"
               showBottomEdge={true}
               priority
+              loading="eager"
             />
           </motion.div>
         </motion.div>

@@ -178,7 +178,7 @@ export default function PrivacyPage() {
                 7. Verification & Open Source Audit
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                Lockout is fully open source under the MIT License. You can independently verify all network requests, database schemas, and permission usage by reviewing our source repository on GitHub.
+                Lockout is fully open source under the GNU General Public License v3.0 (GPL-3.0). You can independently verify all network requests, database schemas, and permission usage by reviewing our source repository on GitHub.
               </p>
               <div className="pt-2">
                 <a

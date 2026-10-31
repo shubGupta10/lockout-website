@@ -17,10 +17,19 @@ export const metadata: Metadata = {
 const ESSENTIAL_INFO = [
   {
     title: "Open source & transparent",
-    description: "Lockout is distributed under the MIT License. Inspect every line of code, verify build checksums, or compile the APK yourself.",
+    description: "Lockout is distributed under the GNU General Public License v3.0 (GPL-3.0). Inspect every line of code, verify build checksums, or compile the APK yourself.",
     link: {
       href: siteConfig.links.github,
       label: "Browse source",
+      isExternal: true,
+    },
+  },
+  {
+    title: "Automatic updates",
+    description: "Want seamless background updates without Google Play? Install Lockout through Obtainium to get automatically notified and updated whenever a new release lands.",
+    link: {
+      href: siteConfig.links.obtainium,
+      label: "Add to Obtainium",
       isExternal: true,
     },
   },
@@ -58,7 +67,7 @@ export default async function DownloadPage() {
           </p>
 
           <div className="mt-10 flex flex-col gap-3">
-            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center flex-wrap">
               <a
                 href={release.downloadUrl}
                 className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-primary text-primary-foreground text-[15px] font-medium whitespace-nowrap hover:opacity-90 transition-opacity shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
@@ -67,10 +76,19 @@ export default async function DownloadPage() {
                 <span>Download APK</span>
               </a>
               <a
+                href={siteConfig.links.obtainium}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-lg text-foreground text-[15px] font-medium border border-border hover:bg-muted transition-colors shadow-sm"
+              >
+                <ArrowRight className="w-4 h-4 text-muted-foreground shrink-0" />
+                <span>Install with Obtainium</span>
+              </a>
+              <a
                 href={siteConfig.release.githubReleaseUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 h-12 px-8 rounded-lg text-foreground text-[15px] font-medium border border-border hover:bg-muted transition-colors shadow-sm"
+                className="inline-flex items-center justify-center gap-2.5 h-12 px-6 rounded-lg text-foreground text-[15px] font-medium border border-border hover:bg-muted transition-colors shadow-sm"
               >
                 <FontAwesomeIcon icon={faGithub} className="w-4 h-4 text-muted-foreground shrink-0" />
                 <span>View Source</span>
@@ -78,7 +96,7 @@ export default async function DownloadPage() {
             </div>
 
             <p className="text-[13px] text-muted-foreground pt-1">
-              Requires Android 10+
+              Requires Android 10+ · Verified direct APK release
             </p>
           </div>
         </header>
@@ -136,7 +154,7 @@ export default async function DownloadPage() {
           </div>
         </section>
 
-        <section className="w-full border-t border-border pt-16 flex flex-col md:flex-row gap-12 md:gap-16 lg:gap-20">
+        <section className="w-full border-t border-border pt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {ESSENTIAL_INFO.map((info) => (
             <div key={info.title} className="flex-1 flex flex-col">
               <h3 className="text-[17px] font-semibold text-foreground mb-3 tracking-tight">{info.title}</h3>

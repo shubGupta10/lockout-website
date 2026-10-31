@@ -50,7 +50,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "How do I install and update the app?",
-    answer: "You can download the APK from our download page or GitHub Releases. The page includes simple instructions to help you install it.",
+    answer: "You can download the APK directly from our Download Hub or GitHub Releases. For automatic background updates on Android without Google Play, you can also install and track Lockout using Obtainium.",
     link: {
       text: "Go to Download Hub",
       href: "/download",
