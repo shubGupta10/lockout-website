@@ -104,7 +104,7 @@ export default function FeedbackPage() {
   const types: { id: FeedbackType; label: string }[] = [
     { id: "bug", label: "Bug report" },
     { id: "feature", label: "Feature idea" },
-    { id: "testimonial", label: "Testimonial" },
+    { id: "testimonial", label: "General feedback" },
   ];
 
   return (
@@ -120,11 +120,11 @@ export default function FeedbackPage() {
               </span>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15] text-balance">
-                Help shape what we <Highlight>build</Highlight> next
+                Help shape what gets <Highlight>built</Highlight> next
               </h1>
 
               <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed text-balance">
-                Lockout is an open-source, offline-first tool. Every note goes directly to the maintainer to guide bug fixes and future updates.
+                Lockout is free, open source, and built independently. Every note goes directly to the maintainer to guide bug fixes and upcoming releases.
               </p>
             </div>
 
@@ -150,11 +150,11 @@ export default function FeedbackPage() {
                 </div>
 
                 <h2 className="text-2xl font-semibold text-foreground tracking-tight mb-2">
-                  Message received
+                  Note received
                 </h2>
 
                 <p className="text-base text-muted-foreground max-w-sm leading-relaxed mb-6">
-                  Thank you. Your feedback has been recorded.
+                  Thanks for taking the time to share your thoughts. It directly helps make Lockout better for everyone.
                 </p>
 
                 <button
@@ -169,7 +169,7 @@ export default function FeedbackPage() {
                   }}
                   className="inline-flex items-center justify-center h-11 px-6 rounded-lg bg-background text-foreground text-sm font-medium border border-zinc-300 dark:border-zinc-700 hover:bg-muted transition-colors cursor-pointer"
                 >
-                  Send another message
+                  Send another note
                 </button>
               </div>
             ) : (
@@ -229,10 +229,10 @@ export default function FeedbackPage() {
                     onChange={(e) => handleChange("message", e.target.value)}
                     placeholder={
                       formData.type === "bug"
-                        ? "What happened, and how can we reproduce it?"
+                        ? "What happened, and what were the steps to reproduce it?"
                         : formData.type === "feature"
                           ? "What would you like to see added or improved?"
-                          : "How has Lockout helped your focus?"
+                          : "How has Lockout been working for you, or what's on your mind?"
                     }
                     className="w-full bg-background border border-zinc-300 dark:border-zinc-700 rounded-xl p-4 text-[15px] text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground focus:ring-1 focus:ring-foreground transition-all resize-y min-h-[160px]"
                   />

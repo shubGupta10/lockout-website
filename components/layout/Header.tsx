@@ -69,7 +69,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       onClick={toggleTheme}
-      className={className || "p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer flex items-center justify-center"}
+      className={className || "p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded-full outline-none focus:outline-none cursor-pointer flex items-center justify-center"}
       aria-label="Toggle Dark Mode"
     >
       {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -162,7 +162,7 @@ export default function Header() {
           {/* Brand Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 text-xl sm:text-[22px] font-bold tracking-tight text-foreground hover:opacity-85 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-md"
+            className="flex items-center gap-3 text-xl sm:text-[22px] font-bold tracking-tight text-foreground hover:opacity-85 transition-opacity outline-none focus:outline-none rounded-md"
           >
             <Image
               src="/icon.png"
@@ -188,7 +188,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onMouseEnter={() => setHoveredLink(link.href)}
-                  className={`relative px-4 py-2 text-[15px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring rounded-full ${isActive
+                  className={`relative px-4 py-2 text-[15px] transition-colors rounded-full outline-none focus:outline-none ${isActive
                     ? "font-semibold text-primary"
                     : "font-medium text-muted-foreground hover:text-foreground"
                     }`}
@@ -219,7 +219,7 @@ export default function Header() {
               type="button"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
-              className="md:hidden p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+              className="md:hidden p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors rounded-full outline-none focus:outline-none cursor-pointer"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -246,7 +246,7 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block py-3 px-4 rounded-xl text-[16px] transition-colors ${isActive
+                      className={`block py-3 px-4 rounded-xl text-[16px] transition-colors outline-none focus:outline-none ${isActive
                         ? "font-semibold text-primary bg-muted"
                         : "font-medium text-muted-foreground hover:text-foreground hover:bg-muted"
                         }`}
@@ -259,7 +259,7 @@ export default function Header() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block py-3 px-4 rounded-xl text-[16px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  className="block py-3 px-4 rounded-xl text-[16px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors outline-none focus:outline-none"
                 >
                   GitHub
                 </a>
