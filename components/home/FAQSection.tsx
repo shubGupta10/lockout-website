@@ -37,7 +37,7 @@ export default function FAQSection() {
             Common questions, <Highlight>answered</Highlight>
           </h2>
           <p className="text-[16px] sm:text-lg text-muted-foreground max-w-xl mx-auto mt-4 sm:mt-5 leading-relaxed text-balance">
-            Answers about Lockout, privacy, and native Android blocking.
+            Quick answers about privacy, permissions, and how Lockout works.
           </p>
         </motion.div>
 

@@ -1,10 +1,10 @@
 import { ShieldCheck, WifiOff, Code2, Smartphone } from "lucide-react";
 
 const trusts = [
-  { icon: WifiOff, text: "Offline-First" },
+  { icon: WifiOff, text: "100% Offline" },
   { icon: Code2, text: "Open Source" },
-  { icon: ShieldCheck, text: "No Accounts Required" },
-  { icon: Smartphone, text: "Native Android" },
+  { icon: ShieldCheck, text: "No Accounts or Sign-up" },
+  { icon: Smartphone, text: "Built for Android" },
 ];
 
 export default function TrustStrip() {

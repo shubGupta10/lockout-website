@@ -12,57 +12,57 @@ const permissions = [
   {
     name: "Usage Access",
     systemName: "PACKAGE_USAGE_STATS",
-    why: "To detect when you open a distracting app.",
-    usage: "Lockout evaluates the current foreground app locally in memory. If it matches your Global Block list during an active Focus Session, the block screen is triggered.",
-    notUsedFor: "We do not transmit your usage history. We do not evaluate usage outside of checking your Global Block list.",
+    why: "To detect when you open a blocked app.",
+    usage: "Lockout checks the name of the app currently on your screen. If it's on your blocklist during an active session, the block screen appears.",
+    notUsedFor: "We never record or upload your app usage history anywhere. We only check if the active app is on your blocklist.",
     privacy: "Evaluated locally · Never saved",
   },
   {
     name: "Display Over Apps",
     systemName: "SYSTEM_ALERT_WINDOW",
-    why: "To draw the full-screen block UI.",
-    usage: "When a distracting app is detected, Lockout uses this permission to instantly overlay the 'Get back to work' screen.",
-    notUsedFor: "We do not draw invisible overlays to hijack taps, nor do we display advertisements.",
+    why: "To show the full-screen block screen.",
+    usage: "When you open a blocked app, Lockout displays the shield screen on top of it so you can return to focusing.",
+    notUsedFor: "We never display ads, and we never show hidden overlays to intercept your touches.",
     privacy: "Local UI rendering only",
   },
   {
     name: "Foreground Service & Special Use",
     systemName: "FOREGROUND_SERVICE",
-    why: "To keep the blocker running reliably in the background.",
-    usage: "Android aggressively kills background apps. This service ensures Lockout stays alive while your Focus Session is active.",
-    notUsedFor: "We do not run this service when you don't have an active Focus Session or a scheduled Routine pending.",
+    why: "To keep blocking active while your timer runs.",
+    usage: "Android closes background apps to free up memory. This service ensures your focus session isn't stopped in the middle of your work.",
+    notUsedFor: "This service only runs during an active session or routine—never when you aren't using Lockout.",
     privacy: "Tied to a visible notification",
   },
   {
     name: "Exact Alarms & Boot Completed",
     systemName: "SCHEDULE_EXACT_ALARM / RECEIVE_BOOT_COMPLETED",
-    why: "To trigger your scheduled Routines on time.",
-    usage: "Ensures that your 'Workday Focus' or 'Sleep Mode' Routines activate precisely when they should, even if your phone restarts.",
-    notUsedFor: "We do not wake your device for any reason other than your explicit schedules.",
+    why: "To start your scheduled routines on time.",
+    usage: "Starts your focus routines at the exact time you scheduled, even if your phone was restarted.",
+    notUsedFor: "We never run background tasks or wake your device outside of the schedules you create.",
     privacy: "Local scheduling",
   },
   {
     name: "Notifications",
     systemName: "POST_NOTIFICATIONS",
-    why: "To provide ambient pre-session warnings.",
-    usage: "Alerts you 5-10 minutes before a scheduled Routine begins, giving you time to finish your current task.",
-    notUsedFor: "We do not send marketing notifications.",
+    why: "To give you a reminder before a session starts.",
+    usage: "Sends a notification a few minutes before a scheduled routine begins, giving you time to wrap up what you're doing.",
+    notUsedFor: "We never send promotional alerts, marketing push notifications, or spam.",
     privacy: "Local alerts only",
   },
   {
     name: "Query All Packages",
     systemName: "QUERY_ALL_PACKAGES",
-    why: "To allow you to select which apps to block.",
-    usage: "Lockout reads the list of apps installed on your phone so you can build your Global Block list.",
-    notUsedFor: "We do not transmit your installed app list.",
+    why: "To let you choose which apps to block.",
+    usage: "Shows you a list of apps installed on your phone so you can add them to your blocklist.",
+    notUsedFor: "Your list of installed apps stays strictly on your device. We never upload or share it.",
     privacy: "Rendered locally in Settings",
   },
   {
     name: "Ignore Battery Optimizations",
     systemName: "REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
-    why: "To prevent Android from killing your active Focus Session.",
-    usage: "Required on some OEM devices (like Samsung/Xiaomi) that force-close background apps.",
-    notUsedFor: "We do not run excessive background tasks that drain battery.",
+    why: "To stop your phone from pausing Lockout.",
+    usage: "Certain phone brands (like Samsung, Xiaomi, and OnePlus) aggressively close apps in the background. This setting keeps your blocker running until your timer ends.",
+    notUsedFor: "Lockout is lightweight and won't drain your battery in the background.",
     privacy: "System power setting",
   },
 ];
@@ -79,7 +79,7 @@ export default function TransparencyPage() {
             Permissions & Transparency
           </h1>
           <p className="text-[15px] sm:text-[16px] md:text-[17px] font-normal text-muted-foreground max-w-[580px] leading-[1.65]">
-            To physically block apps and schedule Routines, Lockout requires deep Android system access. Here is exactly what we use, why we need it, and what we don't do.
+            To block apps and run automated schedules, Lockout needs a few Android system permissions. Here is a clear breakdown of what we use, why we need it, and what we never do.
           </p>
         </div>
 

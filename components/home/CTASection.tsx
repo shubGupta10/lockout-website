@@ -25,12 +25,12 @@ export default function CTASection() {
             id="cta-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.2] md:leading-[1.15] text-balance"
           >
-            Take back your <Highlight>attention</Highlight>
+            Ready to get <Highlight>focused</Highlight>?
           </h2>
 
           {/* Supporting Copy */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto mt-5 leading-relaxed text-balance">
-            Download Lockout for Android and start your next Focus Session.
+            Download Lockout for Android and set your first timer in seconds.
           </p>
 
           {/* Primary Action */}
@@ -46,7 +46,7 @@ export default function CTASection() {
 
           {/* Discreet Trust & Compatibility Note */}
           <p className="text-xs sm:text-sm text-muted-foreground mt-5 select-none text-center">
-            Free & open source · No account required
+            Free & open source · No accounts · Works offline
           </p>
         </motion.div>
       </div>

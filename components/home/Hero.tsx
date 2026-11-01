@@ -47,7 +47,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Block Distractions. Get your <Highlight>time</Highlight> back
+          Block distractions. Get your <Highlight>time</Highlight> back.
         </motion.h1>
 
         <motion.p
@@ -56,7 +56,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
         >
-          Stop mindless scrolling and focus on what matters. Block distracting apps with timers or automatic routines. Free, open source, and built for Android.
+          Lock out addictive apps, set strict focus timers, and build daily routines that stick. Free, open source, and runs completely offline on Android.
         </motion.p>
 
         <motion.div

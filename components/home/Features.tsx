@@ -26,10 +26,10 @@ export default function Features() {
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-[28px] sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.2] md:leading-[1.15] text-balance">
-            One place to stay <Highlight>focused</Highlight>
+            Built to break <Highlight>distraction habits</Highlight>
           </h2>
           <p className="text-[16px] sm:text-lg text-muted-foreground max-w-xl mx-auto mt-4 sm:mt-5 leading-relaxed text-balance">
-            Native system-level blocking, strict focus sessions, and automated routines.
+            Hard-to-bypass blocking, focus timers, and automated schedules.
           </p>
         </div>
 
@@ -37,7 +37,7 @@ export default function Features() {
         <div className="rounded-[24px] md:rounded-[32px] bg-border border border-border overflow-hidden shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-px">
 
-            {/* Card 1: Native app blocking */}
+            {/* Card 1: Instant app blocking */}
             <div className="lg:col-span-7 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
               <motion.div
                 className="flex flex-col justify-between h-full"
@@ -48,10 +48,10 @@ export default function Features() {
               >
                 <div className="max-w-xl z-10">
                   <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
-                    Native app blocking
+                    Instant app blocking
                   </h3>
                   <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                    Using Android's native system APIs, Lockout intercepts distracting apps the millisecond you open them. Evaluated 100% locally on your device with zero workarounds.
+                    Lockout blocks distracting apps the moment you tap them. Everything runs directly on your phone, so it works reliably even without an internet connection.
                   </p>
                 </div>
                 <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
@@ -86,7 +86,7 @@ export default function Features() {
                     Focus Sessions
                   </h3>
                   <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                    Start a Focus Session with the interactive orb. Strict mode prevents cancelling the session when the urge to check your phone strikes.
+                    Pick your focus duration and start. Strict mode prevents you from quitting early when you get the temptation to scroll.
                   </p>
                 </div>
                 <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
@@ -106,7 +106,7 @@ export default function Features() {
               </motion.div>
             </div>
 
-            {/* Card 3: Earn Coins */}
+            {/* Card 3: Focus Rewards */}
             <div className="lg:col-span-5 bg-muted pt-8 px-6 sm:pt-12 sm:px-12 lg:pt-14 lg:px-14 flex flex-col justify-between relative group overflow-hidden transition-colors duration-300 hover:bg-card">
               <motion.div
                 className="flex flex-col justify-between h-full"
@@ -117,10 +117,10 @@ export default function Features() {
               >
                 <div className="max-w-xl z-10">
                   <h3 className="text-[22px] sm:text-[28px] font-semibold text-foreground tracking-tight leading-snug">
-                    Earn Coins
+                    Focus Rewards
                   </h3>
                   <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                    Turn your productivity into currency. Earn coins for every focused minute and spend them in the Coin Shop to unlock exclusive rewards.
+                    Earn coins for every minute you stay focused. Spend them to unlock new visual themes and timer styles.
                   </p>
                 </div>
                 <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
@@ -154,7 +154,7 @@ export default function Features() {
                     Routines
                   </h3>
                   <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                    Schedule recurring Routines for workday deep work, study blocks, or bedtime. Lockout automatically engages your blocklists on time, complete with ambient pre-session warnings.
+                    Set recurring schedules for work, study, or sleep. Lockout turns on your blocklist automatically and gives you a heads-up before sessions begin.
                   </p>
                 </div>
                 <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
@@ -188,7 +188,7 @@ export default function Features() {
                     Progress & Streaks
                   </h3>
                   <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                    Track your daily deep focus hours, weekly trends, and build unstoppable streaks. All analytics are computed and stored purely in a local SQLite database on your device.
+                    Check your daily focus time, weekly trends, and keep your streaks alive. All statistics stay private on your device.
                   </p>
                 </div>
                 <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">
@@ -222,7 +222,7 @@ export default function Features() {
                     Custom Blocklists
                   </h3>
                   <p className="text-[16px] sm:text-lg text-muted-foreground leading-relaxed mt-3 sm:mt-4">
-                    Quickly search, filter, and choose exactly which apps to block. Adapts seamlessly to your Android system's dark or light theme with zero lag.
+                    Search and choose exactly which apps to restrict. Toggle them on or off anytime with simple, granular controls.
                   </p>
                 </div>
                 <div className="w-full flex justify-center mt-10 sm:mt-12 lg:mt-16 -mb-px overflow-hidden">

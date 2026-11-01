@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/config";
 import { Metadata } from "next";
 import Link from "next/link";
-import { Database, UserX, Ban, Activity, ShieldCheck, ArrowRight } from "lucide-react";
+import { Database, UserX, Ban, ShieldCheck, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Lockout",
@@ -15,7 +15,7 @@ const keyPrinciples = [
   {
     icon: Database,
     title: "Offline-First Storage",
-    description: "Core features require zero internet connectivity. Focus Session logs, Routines, and Global Block lists are stored entirely in a local SQLite database on your device.",
+    description: "Lockout works completely offline. Your focus history, routines, and blocklists are stored directly on your phone.",
   },
   {
     icon: UserX,
@@ -25,12 +25,12 @@ const keyPrinciples = [
   {
     icon: Ban,
     title: "Zero Ads or Data Brokers",
-    description: "We do not embed third-party advertising SDKs, commercial data brokers, or behavioral tracking libraries (such as Google Analytics or Meta Pixel).",
+    description: "No ads, no data selling, and zero commercial trackers like Google Analytics or Meta Pixel.",
   },
   {
     icon: ShieldCheck,
-    title: "Privacy-Preserving Telemetry",
-    description: "We use Aptabase, an open-source analytics platform, to measure high-level events (app opens, session completions). Zero personal data or IP addresses collected. Fully toggleable in Settings.",
+    title: "Optional Anonymous Analytics",
+    description: "We use Aptabase, an open-source analytics tool, to count basic events like app opens and finished sessions. No personal data or IP addresses are collected, and you can turn it off in Settings.",
   },
 ];
 
@@ -45,12 +45,12 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="text-[15px] sm:text-[16px] md:text-[17px] font-normal text-muted-foreground max-w-[580px] leading-[1.65]">
-            Lockout is designed to protect your focus without collecting your personal data. Below is a plain-English overview, followed by the complete policy.
+            Lockout helps you stay focused without harvesting your personal data. Here is what we store, what we don't, and how we protect your privacy.
           </p>
           <div className="mt-6 flex items-center justify-center gap-3 text-[11px] font-mono text-muted-foreground uppercase tracking-wider font-medium">
-            <span>Last Updated: October 2026</span>
+            <span>Last updated: {siteConfig.release.date}</span>
             <span>·</span>
-            <span className="text-accent font-semibold">Official Release</span>
+            <span className="text-accent font-semibold">v{siteConfig.release.version}</span>
           </div>
         </div>
 
@@ -100,7 +100,7 @@ export default function PrivacyPage() {
                 1. Architecture & Core Principles
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                Lockout is an offline-first productivity and habit-building utility. We do not sync your personal data (including Focus Session history, Global Block lists, Routines, or unlocked rewards) to any remote servers. All core functionality operates strictly within the local environment of your Android device.
+                Lockout is built to work offline. We never upload your focus history, blocklists, routines, or unlocked rewards to remote servers. Everything runs entirely on your Android device.
               </p>
             </section>
 
@@ -109,28 +109,28 @@ export default function PrivacyPage() {
                 2. Data Stored Locally (SQLite)
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                The application utilizes an encrypted local SQLite database hosted exclusively within the app's sandboxed storage directory to manage:
+                Lockout stores your data in a private, local database on your phone to keep track of:
               </p>
               <ul className="list-disc list-inside space-y-2 text-[15px] text-muted-foreground pl-2 mt-2">
-                <li>Focus Session logs (start time, duration, completion status)</li>
-                <li>Global Block list (Android package identifiers you designate for blocking)</li>
-                <li>Coin balance and unlocked cosmetic themes</li>
-                <li>Scheduled recurring Routines</li>
+                <li>Focus session history (start time, duration, completion status)</li>
+                <li>Blocklists (the apps you choose to block)</li>
+                <li>Coin balance and unlocked timer themes</li>
+                <li>Scheduled routines</li>
               </ul>
               <p className="text-[15px] text-muted-foreground leading-[1.75] mt-4">
-                This database never leaves your phone and is permanently deleted when you uninstall Lockout or clear the application data in Android Settings.
+                This database never leaves your phone and is permanently deleted when you uninstall Lockout or clear application data in Android Settings.
               </p>
             </section>
 
             <section className="space-y-3">
               <h3 className="text-xl font-semibold text-foreground tracking-tight">
-                3. Privacy-Preserving Telemetry & Operational Analytics
+                3. Optional Anonymous Analytics (Aptabase)
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                Lockout integrates Aptabase, an open-source, privacy-first analytics platform. We strictly use it to measure aggregated operational events (such as app opens, focus session start and completion counts, and app versions) to help us gauge feature usage and identify stability issues.
+                Lockout integrates Aptabase, an open-source, privacy-first analytics tool. We use it to measure high-level counts (such as app opens, completed focus sessions, and app version) to fix bugs and improve stability.
               </p>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                <strong>Aptabase does not collect personal data, store IP addresses, or use advertising identifiers.</strong> Telemetry is fully optional: you can easily enable or disable anonymous usage data at any time during onboarding or under <span className="font-semibold text-foreground">Settings &rarr; About & Support</span>.
+                <strong>Aptabase does not collect personal data, store IP addresses, or use tracking identifiers.</strong> Analytics is completely optional: you can easily enable or disable anonymous usage data at any time during onboarding or under <span className="font-semibold text-foreground">Settings &rarr; About & Support</span>.
               </p>
             </section>
 
@@ -139,10 +139,10 @@ export default function PrivacyPage() {
                 4. Android Permissions & Usage Evaluation
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                To physically intercept distracting applications, Lockout requests privileged Android capabilities, including <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs text-foreground">PACKAGE_USAGE_STATS</code> and <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs text-foreground">SYSTEM_ALERT_WINDOW</code>.
+                To block distracting apps, Lockout requests standard Android permissions, including <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs text-foreground">PACKAGE_USAGE_STATS</code> and <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs text-foreground">SYSTEM_ALERT_WINDOW</code>.
               </p>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                <strong>We never transmit your application usage logs or list of installed apps externally.</strong> Usage access is evaluated in real-time memory strictly to determine if the active foreground package is on your Global Block list.
+                <strong>We never transmit your application usage logs or list of installed apps externally.</strong> Usage access is evaluated in temporary device memory strictly to determine if the active app is on your blocklist.
               </p>
               <div className="pt-2">
                 <Link
@@ -160,7 +160,7 @@ export default function PrivacyPage() {
                 5. Third-Party Integrations
               </h3>
               <p className="text-[15px] text-muted-foreground leading-[1.75]">
-                Lockout does not partner with commercial data brokers, ad networks, or user profiling vendors. Our only external operational tool is Aptabase, which operates under strict privacy-preserving standards (GDPR, CCPA, and PECR compliant).
+                Lockout does not partner with commercial data brokers, ad networks, or user profiling vendors. Our only external tool is Aptabase, which operates under strict privacy-preserving standards (GDPR, CCPA, and PECR compliant).
               </p>
             </section>
 

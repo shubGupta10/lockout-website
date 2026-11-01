@@ -13,7 +13,7 @@ export interface FAQItem {
 export const homeFaqs: FAQItem[] = [
   {
     question: "Does Lockout work on iOS?",
-    answer: "No. Lockout uses native Android features like Usage Access and Display Over Apps to block apps. Apple does not allow these features on iOS.",
+    answer: "No, Lockout is Android-only. Apple's iOS restrictions do not allow third-party apps to detect running apps or overlay block screens.",
   },
   {
     question: "Why does Lockout need system permissions?",
@@ -25,7 +25,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "Where is my Focus Session data stored?",
-    answer: "All your data, like your session history and block lists, stays strictly on your device. We don't use accounts or cloud sync.",
+    answer: "Everything—including your session history, blocklists, and streak stats—is stored locally on your phone. There are no user accounts, no passwords, and no cloud servers.",
     link: {
       text: "Read our Privacy Policy",
       href: "/privacy",
@@ -37,11 +37,11 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "Can I uninstall Lockout to bypass an active block?",
-    answer: "Yes. Lockout is designed to add enough friction to break your impulsive habits. It is not a permanent device lock, so you can always uninstall it if needed.",
+    answer: "Yes. Lockout creates enough pause to break impulsive scrolling, but it is not a permanent device lock. You stay in full control and can uninstall the app anytime.",
   },
   {
     question: "Is Lockout open source?",
-    answer: "Yes. The source code is fully public on GitHub. You can check how the app works or build it yourself from the source.",
+    answer: "Yes. Lockout is 100% open source under the GNU GPL-3.0 license. You can inspect every line of code, verify security, or compile it yourself on GitHub.",
     link: {
       text: "Inspect source code on GitHub",
       href: siteConfig.links.github,

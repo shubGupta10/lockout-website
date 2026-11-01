@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const ESSENTIAL_INFO = [
   {
     title: "Open source & transparent",
-    description: "Lockout is distributed under the GNU General Public License v3.0 (GPL-3.0). Inspect every line of code, verify build checksums, or compile the APK yourself.",
+    description: "Lockout is 100% open source under the GNU GPL-3.0 license. You can inspect the complete source code, report issues, or build the APK yourself on GitHub.",
     link: {
       href: siteConfig.links.github,
       label: "Browse source",
@@ -26,7 +26,7 @@ const ESSENTIAL_INFO = [
   },
   {
     title: "Automatic updates",
-    description: "Want seamless background updates without Google Play? Install Lockout through Obtainium to get automatically notified and updated whenever a new release lands.",
+    description: "Want automatic updates without Google Play? Track Lockout with Obtainium to install new releases directly as soon as they go live on GitHub.",
     link: {
       href: siteConfig.links.obtainium,
       label: "Add to Obtainium",
@@ -35,7 +35,7 @@ const ESSENTIAL_INFO = [
   },
   {
     title: "System permissions",
-    description: "Lockout requires Android Usage Access and Display Over Apps permissions to physically block apps. No personal data is ever collected or transmitted.",
+    description: "Lockout requires Usage Access and Display Over Apps to detect and overlay blocked screens. No personal data is ever collected or sent to the cloud.",
     link: {
       href: "/transparency",
       label: "Read Transparency Report",
@@ -44,7 +44,7 @@ const ESSENTIAL_INFO = [
   },
   {
     title: "Installation guide",
-    description: "Requires Android 10 or newer. Download the direct APK file and ensure \"Install Unknown Apps\" is enabled in your Android settings.",
+    description: "Requires Android 10 or newer. After downloading, tap the APK to install. If prompted by your browser, tap 'Settings' and allow 'Install unknown apps'.",
   },
 ];
 
