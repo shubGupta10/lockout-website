@@ -7,10 +7,10 @@ export const siteConfig = {
     obtainium: "https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/shubGupta10/focus-app",
   },
   release: {
-    version: "1.4.2",
-    date: "October 2026",
+    version: "1.7.0",
+    date: "November 2026",
     requires: "Android 10+ (API level 29+)",
-    apkUrl: "https://github.com/shubGupta10/focus-app/releases/latest/download/Lockout-v1.4.2.apk",
+    apkUrl: "https://github.com/shubGupta10/focus-app/releases/latest/download/Lockout-v1.7.0.apk",
     githubReleaseUrl: "https://github.com/shubGupta10/focus-app/releases/latest",
   }
 };
