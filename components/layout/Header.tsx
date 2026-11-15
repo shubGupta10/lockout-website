@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const desktopNav = [
   { name: "Download", href: "/download" },
@@ -209,8 +211,17 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Right Actions (Theme Toggle & Mobile Menu Button) */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-2 h-9 px-3.5 rounded-full text-[13px] font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity shadow-sm outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              <FontAwesomeIcon icon={faGithub} className="w-3.5 h-3.5" />
+              <span>Star on GitHub</span>
+            </a>
+
             <div className="hidden md:flex w-9 h-9 items-center justify-center">
               <ThemeToggle />
             </div>
@@ -259,9 +270,10 @@ export default function Header() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block py-3 px-4 rounded-xl text-[16px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors outline-none focus:outline-none"
+                  className="flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-[16px] font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity shadow-sm outline-none focus:outline-none"
                 >
-                  GitHub
+                  <FontAwesomeIcon icon={faGithub} className="w-4 h-4" />
+                  <span>Star on GitHub</span>
                 </a>
               </nav>
 
