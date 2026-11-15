@@ -41,7 +41,6 @@ export default function FAQSection() {
           </p>
         </motion.div>
 
-        {/* Unified Divider Accordion List */}
         <motion.div
           className="max-w-3xl mx-auto w-full"
           initial={{ opacity: 0, y: 24 }}
@@ -64,16 +63,16 @@ export default function FAQSection() {
                   >
                     <span
                       className={`text-[17px] sm:text-lg font-medium transition-colors pr-4 sm:pr-8 text-balance ${isOpen
-                          ? "text-primary"
-                          : "text-foreground group-hover:text-primary/80"
+                        ? "text-primary"
+                        : "text-foreground group-hover:text-primary"
                         }`}
                     >
                       {faq.question}
                     </span>
                     <span
                       className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen
-                          ? "bg-muted text-foreground"
-                          : "text-muted-foreground group-hover:text-foreground group-hover:bg-secondary"
+                        ? "bg-muted text-foreground"
+                        : "text-muted-foreground group-hover:text-foreground group-hover:bg-secondary"
                         }`}
                     >
                       <Plus
