@@ -87,6 +87,10 @@ export default function Header() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -149,7 +153,7 @@ export default function Header() {
     });
   };
 
-  if (pathname === "/admin/feedback") {
+  if (pathname?.startsWith("/admin")) {
     return null;
   }
 
